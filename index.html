@@ -2,41 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>OB/GYN PANCE-Style Flashcard Quiz (Horizontal Flip)</title>
-  <!-- Link to the external CSS file -->
-  <link rel="stylesheet" href="style.css">
+  <title>Select Your Specialty</title>
 </head>
 <body>
-  <h1>OB/GYN PANCE-Style Flashcard Quiz</h1>
-  <div class="progress" id="progress-label"></div>
-
-  <div class="card-container">
-    <div class="card" id="card">
-      <!-- Front side of card -->
-      <div class="card-face card-front" id="card-front">
-        <div class="question-text" id="question-text">
-          <!-- Question will appear here -->
-        </div>
-        <div class="radio-container" id="radio-container">
-          <!-- Radio options will appear here -->
-        </div>
-      </div>
-
-      <!-- Back side of card -->
-      <div class="card-face card-back" id="card-back">
-        <div class="answer-text" id="answer-text">
-          <!-- Correct/Incorrect + Explanation text will appear here -->
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="buttons">
-    <button id="submit-button">Submit Answer</button>
-    <button id="next-button" disabled>Next Question</button>
-  </div>
-
-  <!-- Link to the external JavaScript file -->
-  <script src="scripts.js"></script>
+  <h1>Choose a Specialty</h1>
+  <ul>
+    <li>
+      <!-- For now, just an OB/GYN link that goes to obgynpage.html -->
+      <a href="obgynpage.html">OB/GYN</a>
+    </li>
+    <!-- If you add more specialties in the future, list them here -->
+    <!--
+    <li><a href="internalmedicinepage.html">Internal Medicine</a></li>
+    <li><a href="pediatrics.html">Pediatrics</a></li>
+    ... etc ...
+    -->
+  </ul>
 </body>
 </html>

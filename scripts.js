@@ -46,7 +46,7 @@ function saveStateToLocalStorage() {
 // Load questions from questions.json, then initialize quiz
 async function fetchQuestionsAndInitialize() {
   try {
-    const response = await fetch("questions.json");
+    const response = await fetch("obgyn-questions.json");
     const data = await response.json();
     QUESTIONS = data;
     loadStateFromLocalStorage();
