@@ -1,3 +1,4 @@
+/* Existing styles (unchanged) */
 body {
     margin: 0;
     padding: 0;
@@ -6,41 +7,41 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  h1 {
+}
+
+h1 {
     margin-top: 20px;
-  }
-  
-  .progress {
+}
+
+.progress {
     margin: 10px 0;
     font-style: italic;
     color: #333;
-  }
-  
-  /* Card container with perspective */
-  .card-container {
+}
+
+/* Card container with perspective */
+.card-container {
     perspective: 1000px; /* Enables 3D flip effect */
     width: 600px;
     max-width: 90%;
     margin: 0 auto;
-  }
-  
-  .card {
+}
+
+.card {
     position: relative;
     width: 100%;
     height: 250px;
     transition: transform 0.6s;
     transform-style: preserve-3d;
-  }
-  
-  /* When flipped, rotate around the X-axis 180deg */
-  .card.flipped {
+}
+
+/* When flipped, rotate around the X-axis 180deg */
+.card.flipped {
     transform: rotateX(180deg);
-  }
-  
-  /* Front & Back faces of the card */
-  .card-face {
+}
+
+/* Front & Back faces of the card */
+.card-face {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -52,41 +53,40 @@ body {
     padding: 20px;
     box-sizing: border-box;
     border-radius: 5px;
-  }
-  
-  /* Front side */
-  .card-front {
+}
+
+.card-front {
     background: #ffffff;
-  }
-  
-  /* Back side is initially flipped 180deg around the X-axis */
-  .card-back {
+}
+
+.card-back {
     background: #f0f8ff;
     transform: rotateX(180deg);
     text-align: center;
-  }
-  
-  .question-text, .answer-text {
+}
+
+.question-text,
+.answer-text {
     font-weight: bold;
     margin-bottom: 10px;
-  }
-  
-  .radio-container {
+}
+
+.radio-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 20px;
-  }
-  
-  label {
+}
+
+label {
     margin: 4px 0;
-  }
-  
-  .buttons {
+}
+
+.buttons {
     margin-top: 10px;
-  }
-  
-  button {
+}
+
+button {
     margin: 0 5px;
     padding: 10px 16px;
     border: none;
@@ -95,17 +95,68 @@ body {
     color: #ffffff;
     font-weight: bold;
     cursor: pointer;
-  }
-  
-  button:disabled {
+}
+
+button:disabled {
     background-color: #cccccc;
     cursor: default;
-  }
-  
-  .result-correct {
+}
+
+.result-correct {
     color: green;
-  }
-  
-  .result-incorrect {
+}
+
+.result-incorrect {
     color: red;
-  }
+}
+
+/* -------------------------------------------
+   NEW styles for the “Choose a Specialty” page
+   ------------------------------------------- */
+
+/* A wrapper to center and style the "Choose a Specialty" section */
+.page-container {
+  background-color: #ffffff;
+  margin-top: 30px;
+  padding: 20px;
+  width: 60%;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+  /* Since body is using flex, ensure this container doesn’t shrink weirdly */
+  flex: 0 0 auto;
+}
+
+/* Ensure the heading is centered within this container */
+.page-container h1 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+/* Style for the list of specialties */
+.specialty-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Style for individual list items */
+.specialty-list li {
+  margin: 12px 0;
+  font-size: 1.1em;
+}
+
+/* Style for the links within the list */
+.specialty-list a {
+  text-decoration: none;
+  color: #007BFF;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect on links */
+.specialty-list a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
