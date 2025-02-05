@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>OB/GYN Summary Grid</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Summary of OB/GYN quiz results in a grid.">
+  <meta name="keywords" content="OB/GYN, PANCE, quiz, results, summary">
+  <meta name="author" content="Your Name or Organization">
+
+  <!-- Link your existing CSS for consistent styling -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Additional inline CSS for the clickable grid squares -->
+  <style>
+    /* Container for the page content */
+    .summary-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+    .summary-container h1 {
+      margin-bottom: 1rem;
+    }
+
+    /* The grid that holds the question squares */
+    .question-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 40px); /* 10 squares per row */
+      grid-gap: 10px;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    /* Base style for each square */
+    .question-square {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 0.85rem;
+      cursor: pointer; /* pointer cursor to indicate it's clickable */
+    }
+
+    /* Colors for different states */
+    .correct-square {
+      background-color: green;
+    }
+    .incorrect-square {
+      background-color: red;
+    }
+    .not-answered-square {
+      background-color: gray;
+    }
+  </style>
+</head>
+<body>
+  <div class="summary-container">
+    <h1>OB/GYN Quiz Summary</h1>
+    <p>Click a square to jump to that question.</p>
+
+    <!-- Grid container -->
+    <div class="question-grid" id="questionGrid">
+      <!-- Squares injected by JavaScript -->
+    </div>
+  </div>
+
+  <!-- Script to build the grid and handle click events -->
+  <script>
+    /**
+     * Build a clickable grid of squares:
+     *  - Green for correct
+     *  - Red for incorrect
+     *  - Gray for unanswered
+     *
+     * Clicking a square:
+     *  - Sets localStorage.currentIndex to that question's index
+     *  - Redirects to obgynpage.html
+     */
+    async function buildSummaryGrid() {
+      try {
+        // Fetch the quiz questions
+        const response = await fetch("obgyn-questions.json");
+        const questions = await response.json();
+
+        // Get user answers from localStorage
+        let userAnswers = localStorage.getItem("userAnswers");
+        if (userAnswers) {
+          userAnswers = JSON.parse(userAnswers);
+        } else {
+          userAnswers = {};
+        }
+
+        const gridContainer = document.getElementById("questionGrid");
+        if (!gridContainer) return;
+
+        // Create a square for each question
+        questions.forEach((q, index) => {
+          const square = document.createElement("div");
+          square.classList.add("question-square");
+
+          const questionId = q.id;
+          const correctAnswer = q.answer;
+          const userAnswer = userAnswers[questionId]; // e.g. 'A', 'B', etc.
+
+          // Determine square color
+          if (userAnswer == null) {
+            // Not answered yet
+            square.classList.add("not-answered-square");
+          } else if (userAnswer === correctAnswer) {
+            // Correct
+            square.classList.add("correct-square");
+          } else {
+            // Incorrect
+            square.classList.add("incorrect-square");
+          }
+
+          // Label the square with the question number (1-based)
+          square.textContent = index + 1;
+
+          // Make the square clickable
+          square.addEventListener("click", () => {
+            // Set the currentIndex in localStorage
+            localStorage.setItem("currentIndex", index);
+
+            // Redirect to obgynpage to load that question
+            window.location.href = "obgynpage.html";
+          });
+
+          // Add square to the grid
+          gridContainer.appendChild(square);
+        });
+      } catch (error) {
+        console.error("Error building summary grid:", error);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", buildSummaryGrid);
+  </script>
+</body>
+</html>
