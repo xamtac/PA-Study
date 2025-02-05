@@ -2,41 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>OB/GYN PANCE Quiz</title>
+  <title>OB/GYN PANCE Quiz | Comprehensive Practice</title>
+  <!-- Ensure mobile responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Basic SEO Tags -->
+  <meta name="description" content="Test your knowledge of OB/GYN topics for the PANCE exam. Interactive quiz with progress tracking and real-time feedback." />
+  <meta name="keywords" content="OB/GYN, PANCE, Physician Assistant, quiz, exam, practice questions, obstetrics, gynecology" />
+  <meta name="author" content="Your Name or Organization" />
+  
   <!-- Link to the external CSS file -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>OB/GYN PANCE Questions</h1>
-  <div class="progress" id="progress-label"></div>
+  <header>
+    <nav class="top-nav">
+      <h2 class="visually-hidden">Main Navigation</h2>
+      <!-- If you have menu links, place them here -->
+    </nav>
+  </header>
+  
+  <!-- Wrap content in a container for better mobile flow -->
+  <main class="quiz-section">
+    <h1>OB/GYN PANCE Questions</h1>
+    
+    <!-- Progress label (updated with role for screen readers) -->
+    <div class="progress" id="progress-label" aria-live="polite"></div>
 
-  <div class="card-container">
-    <div class="card" id="card">
-      <!-- Front side of card -->
-      <div class="card-face card-front" id="card-front">
-        <div class="question-text" id="question-text">
-          <!-- Question will appear here -->
+    <!-- The card container -->
+    <div class="card-container">
+      <div class="card" id="card">
+        <!-- Front side of card -->
+        <div class="card-face card-front" id="card-front">
+          <div class="question-text" id="question-text">
+            <!-- Question text goes here -->
+          </div>
+          <div class="radio-container" id="radio-container">
+            <!-- Radio options go here -->
+          </div>
         </div>
-        <div class="radio-container" id="radio-container">
-          <!-- Radio options will appear here -->
-        </div>
-      </div>
 
-      <!-- Back side of card -->
-      <div class="card-face card-back" id="card-back">
-        <div class="answer-text" id="answer-text">
-          <!-- Correct/Incorrect + Explanation text will appear here -->
+        <!-- Back side of card -->
+        <div class="card-face card-back" id="card-back">
+          <div class="answer-text" id="answer-text">
+            <!-- Correct/Incorrect + Explanation text goes here -->
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="buttons">
-    <button id="submit-button">Submit Answer</button>
-    <button id="next-button" disabled>Next Question</button>
-  </div>
+    <!-- Action buttons -->
+    <div class="buttons">
+      <button id="submit-button" aria-label="Submit your answer">Submit Answer</button>
+      <button id="next-button" disabled aria-label="Load the next question">Next Question</button>
+    </div>
+  </main>
 
-  <!-- Link to the external JavaScript file -->
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; <span id="currentYear"></span> Your Organization. All rights reserved.</p>
+  </footer>
+  
+  <!-- External JavaScript -->
   <script src="scripts.js"></script>
+  <script>
+    // Dynamically update the footer year
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

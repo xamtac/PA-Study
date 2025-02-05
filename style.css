@@ -1,4 +1,8 @@
-/* Existing styles (unchanged) */
+/* 
+========================================================
+  Global & Existing Styles (Preserved)
+========================================================
+*/
 body {
     margin: 0;
     padding: 0;
@@ -19,7 +23,7 @@ h1 {
     color: #333;
 }
 
-/* Card container with perspective */
+/* Card container with perspective for Quiz pages */
 .card-container {
     perspective: 1000px; /* Enables 3D flip effect */
     width: 600px;
@@ -65,10 +69,14 @@ h1 {
     text-align: center;
 }
 
+/* Updated to allow word-wrap and better mobile alignment */
 .question-text,
 .answer-text {
     font-weight: bold;
     margin-bottom: 10px;
+    word-wrap: break-word;   /* Allow wrapping of very long text */
+    overflow-wrap: break-word;
+    text-align: left;        /* Friendlier alignment on small screens */
 }
 
 .radio-container {
@@ -86,6 +94,7 @@ label {
     margin-top: 10px;
 }
 
+/* Global button styling */
 button {
     margin: 0 5px;
     padding: 10px 16px;
@@ -110,11 +119,39 @@ button:disabled {
     color: red;
 }
 
-/* -------------------------------------------
-   NEW styles for the “Choose a Specialty” page
-   ------------------------------------------- */
+/* 
+========================================================
+  Original Specialty List Styles (Kept for Safety)
+========================================================
+*/
+.specialty-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
-/* A wrapper to center and style the "Choose a Specialty" section */
+.specialty-list li {
+  margin: 12px 0;
+  font-size: 1.1em;
+}
+
+.specialty-list a {
+  text-decoration: none;
+  color: #007BFF;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.specialty-list a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* 
+========================================================
+  Container Styles (Used by index.html & Others)
+========================================================
+*/
 .page-container {
   background-color: #ffffff;
   margin-top: 30px;
@@ -123,40 +160,108 @@ button:disabled {
   max-width: 800px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
-
-  /* Since body is using flex, ensure this container doesn’t shrink weirdly */
-  flex: 0 0 auto;
+  flex: 0 0 auto; /* So it doesn't shrink abnormally with flex layout */
 }
 
-/* Ensure the heading is centered within this container */
 .page-container h1 {
   text-align: center;
   margin-bottom: 1em;
 }
 
-/* Style for the list of specialties */
-.specialty-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+/* 
+========================================================
+  New Styles for the Button Layout on index.html
+========================================================
+*/
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
-/* Style for individual list items */
-.specialty-list li {
-  margin: 12px 0;
-  font-size: 1.1em;
+.button-container button {
+  background-color: #4CAF50; /* A friendly green */
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 180px; /* Keep buttons consistent in size */
 }
 
-/* Style for the links within the list */
-.specialty-list a {
-  text-decoration: none;
-  color: #007BFF;
-  font-weight: bold;
-  transition: color 0.3s ease;
+.button-container button:hover {
+  background-color: #45a049; /* Slightly darker green on hover */
 }
 
-/* Hover effect on links */
-.specialty-list a:hover {
-  color: #0056b3;
-  text-decoration: underline;
+/*
+========================================================
+  Additional Mobile-Friendly / Layout Fixes
+========================================================
+*/
+
+/* Wrap the OB/GYN page quiz content in a responsive container */
+.quiz-section {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Slightly adjust spacing for quiz buttons on narrow screens */
+.buttons button {
+  margin: 0.5rem 0.3rem;
+}
+
+/* Example .top-nav & .visually-hidden classes if needed */
+.top-nav {
+  padding: 1rem;
+  background: #fefefe;
+  text-align: center;
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+}
+
+/*
+========================================================
+  Responsive Adjustments
+========================================================
+*/
+@media (max-width: 768px) {
+  /* Make the main container fit better on smaller tablets/phones */
+  .page-container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Stack specialty buttons vertically on very small screens */
+  .button-container button {
+    width: 100%;
+    min-width: auto;
+  }
+
+  /* Make quiz buttons full-width and centered on phone screens */
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .buttons button {
+    width: 90%;
+    max-width: 300px;
+  }
 }

@@ -2,24 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Select Your Specialty</title>
-  <!-- Make sure style.css is linked here -->
+  <title>PA Specialty Selection | PANCE Prep</title>
+  <!-- Responsive Meta Tag for mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Basic SEO Meta Tags -->
+  <meta name="description" content="Choose your specialty for PANCE exam practice. Select from OB/GYN, Emergency Medicine, Family Medicine, and more.">
+  <meta name="keywords" content="PANCE, PA specialties, exam practice, OB/GYN, Surgery, Pediatrics, Psychiatry, Internal Medicine">
+  <meta name="author" content="Your Name or Organization">
+  
+  <!-- Link to your stylesheet -->
   <link rel="stylesheet" href="style.css">
+  <!-- Link to your JavaScript file -->
+  <script src="scripts.js" defer></script>
 </head>
 <body>
-  <!-- A container to nicely center and style the content -->
-  <div class="page-container">
+  <header>
+    <nav class="top-nav">
+      <!-- Example placeholder nav (optional). If you have a site-wide nav, put it here -->
+      <h2 class="visually-hidden">Main Navigation</h2>
+      <!-- 
+        .visually-hidden is an accessibility class that hides text visually 
+        but leaves it available to screen readers. 
+      -->
+    </nav>
+  </header>
+
+  <main class="page-container" role="main">
     <h1>Choose a Specialty</h1>
-    <ul class="specialty-list">
-      <li><a href="obgynpage.html">OB/GYN</a></li>
-      <li><a href="emergencymedicine.html">Emergency Medicine</a></li>
-      <li><a href="familymedicine.html">Family Medicine</a></li>
-      <li><a href="generalsurgery.html">General Surgery</a></li>
-      <li><a href="surgery2024.html">Surgery (aligned to 2024 blueprint)</a></li>
-      <li><a href="internalmedicine.html">Internal Medicine</a></li>
-      <li><a href="pediatrics.html">Pediatrics</a></li>
-      <li><a href="psychiatry_behavioralhealth.html">Psychiatry &amp; Behavioral Health</a></li>
-    </ul>
-  </div>
+    <p class="intro-text">
+      Select from a range of specialties to begin your PANCE exam practice.  
+      Each specialty features a comprehensive set of questions tailored to test your knowledge.
+    </p>
+
+    <!-- Button container -->
+    <div class="button-container">
+      <button onclick="navigateTo('obgynpage.html')">OB/GYN</button>
+      <button onclick="navigateTo('emergencymedicine.html')">Emergency Medicine</button>
+      <button onclick="navigateTo('familymedicine.html')">Family Medicine</button>
+      <button onclick="navigateTo('generalsurgery.html')">General Surgery</button>
+      <button onclick="navigateTo('surgery2024.html')">Surgery</button>
+      <button onclick="navigateTo('internalmedicine.html')">Internal Medicine</button>
+      <button onclick="navigateTo('pediatrics.html')">Pediatrics</button>
+      <button onclick="navigateTo('psychiatry_behavioralhealth.html')">Psychiatry &amp; Behavioral Health</button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="currentYear"></span> M & M Consulting. All rights reserved. Xamtac is the best.</p>
+  </footer>
+  
+  <script>
+    // Dynamically update the footer with the current year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

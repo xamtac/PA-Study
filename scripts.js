@@ -1,4 +1,10 @@
-// DOM elements
+/*
+=====================================================
+  Existing Quiz Functionality (Preserved)
+=====================================================
+*/
+
+// DOM elements (These will be null on index.html, but that's harmless)
 const progressLabel = document.getElementById("progress-label");
 const card = document.getElementById("card");
 const cardFront = document.getElementById("card-front");
@@ -53,7 +59,9 @@ async function fetchQuestionsAndInitialize() {
     loadQuestion();
   } catch (err) {
     console.error("Error loading questions.json:", err);
-    progressLabel.textContent = "Error loading questions.";
+    if (progressLabel) {
+      progressLabel.textContent = "Error loading questions.";
+    }
   }
 }
 
@@ -61,48 +69,59 @@ async function fetchQuestionsAndInitialize() {
  * Load the current question onto the front of the card.
  */
 function loadQuestion() {
+  if (!QUESTIONS.length) return; // If no questions loaded, just bail out
   if (currentIndex >= QUESTIONS.length) {
     endQuiz();
     return;
   }
 
   // If the card is flipped from the previous question, reset it
-  if (cardFlipped) {
+  if (card && cardFlipped) {
     card.classList.remove("flipped");
     cardFlipped = false;
   }
 
   // Clear previous radio buttons
-  radioContainer.innerHTML = "";
+  if (radioContainer) {
+    radioContainer.innerHTML = "";
+  }
   selectedAnswer = null;
 
   const q = QUESTIONS[currentIndex];
-  progressLabel.textContent = `Question ${currentIndex + 1} of ${QUESTIONS.length}`;
-  questionText.textContent = q.question;
+  if (progressLabel) {
+    progressLabel.textContent = `Question ${currentIndex + 1} of ${QUESTIONS.length}`;
+  }
+  if (questionText) {
+    questionText.textContent = q.question;
+  }
 
   // Create radio buttons for each choice
-  q.choices.forEach((choice, idx) => {
-    const label = document.createElement("label");
-    label.style.cursor = "pointer";
+  if (radioContainer) {
+    q.choices.forEach((choice, idx) => {
+      const label = document.createElement("label");
+      label.style.cursor = "pointer";
 
-    const input = document.createElement("input");
-    input.type = "radio";
-    input.name = "answer";
-    input.value = String.fromCharCode(65 + idx); // 'A', 'B', 'C', 'D', 'E'
-    input.onclick = () => {
-      selectedAnswer = input.value;
-    };
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = "answer";
+      input.value = String.fromCharCode(65 + idx); // 'A', 'B', 'C', 'D', 'E'
+      input.onclick = () => {
+        selectedAnswer = input.value;
+      };
 
-    label.appendChild(input);
-    label.appendChild(document.createTextNode(" " + choice));
-    radioContainer.appendChild(label);
-  });
+      label.appendChild(input);
+      label.appendChild(document.createTextNode(" " + choice));
+      radioContainer.appendChild(label);
+    });
+  }
 
   // Buttons
-  submitButton.disabled = false;
-  nextButton.disabled = true;
-  answerText.textContent = "";
-  answerText.className = "answer-text";
+  if (submitButton) submitButton.disabled = false;
+  if (nextButton) nextButton.disabled = true;
+  if (answerText) {
+    answerText.textContent = "";
+    answerText.className = "answer-text";
+  }
 }
 
 /**
@@ -110,11 +129,15 @@ function loadQuestion() {
  */
 function submitAnswer() {
   if (selectedAnswer === null) {
-    progressLabel.textContent = "Please select an answer.";
+    if (progressLabel) {
+      progressLabel.textContent = "Please select an answer.";
+    }
     return;
   }
 
-  submitButton.disabled = true;
+  if (submitButton) {
+    submitButton.disabled = true;
+  }
 
   const currentQuestion = QUESTIONS[currentIndex];
   const correct = currentQuestion.answer;
@@ -133,15 +156,21 @@ function submitAnswer() {
   }
 
   // Fill the back side with result
-  answerText.textContent = resultStr;
-  answerText.classList.add(resultClass);
+  if (answerText) {
+    answerText.textContent = resultStr;
+    answerText.classList.add(resultClass);
+  }
 
   // Flip the card
-  card.classList.add("flipped");
-  cardFlipped = true;
+  if (card) {
+    card.classList.add("flipped");
+    cardFlipped = true;
+  }
 
   // Enable Next button
-  nextButton.disabled = false;
+  if (nextButton) {
+    nextButton.disabled = false;
+  }
 
   // Save state (currentIndex, score, userAnswers)
   saveStateToLocalStorage();
@@ -160,21 +189,48 @@ function nextQuestion() {
  * Show final score and disable further interactions.
  */
 function endQuiz() {
-  progressLabel.textContent = "Quiz Complete!";
-  questionText.textContent = `Final Score: ${score} / ${QUESTIONS.length}`;
-  radioContainer.innerHTML = "";
-  answerText.textContent = "Thanks for playing!";
-  answerText.className = "answer-text";
-  submitButton.disabled = true;
-  nextButton.disabled = true;
+  if (progressLabel) {
+    progressLabel.textContent = "Quiz Complete!";
+  }
+  if (questionText) {
+    questionText.textContent = `Final Score: ${score} / ${QUESTIONS.length}`;
+  }
+  if (radioContainer) {
+    radioContainer.innerHTML = "";
+  }
+  if (answerText) {
+    answerText.textContent = "Thanks for playing!";
+    answerText.className = "answer-text";
+  }
+  if (submitButton) {
+    submitButton.disabled = true;
+  }
+  if (nextButton) {
+    nextButton.disabled = true;
+  }
   
-  // Optionally clear or keep state
-  // localStorage.clear(); // If you want the user to start fresh on next load
+  // Optionally clear or keep state:
+  // localStorage.clear(); // Uncomment if you want a fresh start each time
 }
 
-// Event listeners
-submitButton.addEventListener("click", submitAnswer);
-nextButton.addEventListener("click", nextQuestion);
+// Event listeners (only relevant on quiz pages)
+if (submitButton) {
+  submitButton.addEventListener("click", submitAnswer);
+}
+if (nextButton) {
+  nextButton.addEventListener("click", nextQuestion);
+}
 
-// Initialize
-fetchQuestionsAndInitialize();
+// Initialize quiz if relevant elements exist (for OB/GYN page, etc.)
+if (progressLabel && card) {
+  fetchQuestionsAndInitialize();
+}
+
+/*
+=====================================================
+  New Function for index.html Navigation
+=====================================================
+*/
+function navigateTo(url) {
+  window.location.href = url;
+}
