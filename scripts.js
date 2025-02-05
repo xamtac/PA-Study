@@ -16,7 +16,7 @@ const submitButton = document.getElementById("submit-button");
 const nextButton = document.getElementById("next-button");
 
 // State variables
-let QUESTIONS = [];         // Will fetch from questions.json
+let QUESTIONS = [];         // Will fetch from obgyn-questions.json
 let currentIndex = 0;
 let score = 0;
 let cardFlipped = false;
@@ -25,7 +25,9 @@ let selectedAnswer = null;
 // For storing user answers: questionId -> chosen answer
 let userAnswers = {};
 
-// Load any saved state from localStorage
+/**
+ * Load any saved state from localStorage
+ */
 function loadStateFromLocalStorage() {
   const savedIndex = localStorage.getItem("currentIndex");
   const savedScore = localStorage.getItem("score");
@@ -42,14 +44,18 @@ function loadStateFromLocalStorage() {
   }
 }
 
-// Save the current quiz state to localStorage
+/**
+ * Save the current quiz state to localStorage
+ */
 function saveStateToLocalStorage() {
   localStorage.setItem("currentIndex", currentIndex);
   localStorage.setItem("score", score);
   localStorage.setItem("userAnswers", JSON.stringify(userAnswers));
 }
 
-// Load questions from questions.json, then initialize quiz
+/**
+ * Load questions from obgyn-questions.json, then initialize quiz
+ */
 async function fetchQuestionsAndInitialize() {
   try {
     const response = await fetch("obgyn-questions.json");
@@ -104,7 +110,7 @@ function loadQuestion() {
       const input = document.createElement("input");
       input.type = "radio";
       input.name = "answer";
-      input.value = String.fromCharCode(65 + idx); // 'A', 'B', 'C', 'D', 'E'
+      input.value = String.fromCharCode(65 + idx); // 'A', 'B', 'C', 'D'...
       input.onclick = () => {
         selectedAnswer = input.value;
       };
@@ -146,10 +152,13 @@ function submitAnswer() {
   userAnswers[currentQuestion.id] = selectedAnswer;
 
   let resultStr, resultClass;
+  let isCorrect = false;
+
   if (selectedAnswer === correct) {
     score++;
     resultStr = `Correct! You chose ${selectedAnswer}.`;
     resultClass = "result-correct";
+    isCorrect = true;
   } else {
     resultStr = `Incorrect. You chose ${selectedAnswer}, correct is ${correct}.`;
     resultClass = "result-incorrect";
@@ -172,8 +181,11 @@ function submitAnswer() {
     nextButton.disabled = false;
   }
 
-  // Save state (currentIndex, score, userAnswers)
+  // Save state (currentIndex, score, userAnswers) to localStorage
   saveStateToLocalStorage();
+
+  // COMMENTED OUT: Code to send the current answer to a server
+  // saveAnswerToServer(currentQuestion, selectedAnswer, isCorrect);
 }
 
 /**
@@ -208,7 +220,6 @@ function endQuiz() {
   if (nextButton) {
     nextButton.disabled = true;
   }
-  
   // Optionally clear or keep state:
   // localStorage.clear(); // Uncomment if you want a fresh start each time
 }
@@ -228,7 +239,40 @@ if (progressLabel && card) {
 
 /*
 =====================================================
-  New Function for index.html Navigation
+  (Commented-Out) Function for storing each question server-side
+=====================================================
+*/
+
+/*
+async function saveAnswerToServer(questionObj, selectedAnswer, isCorrect) {
+  // Build a payload with any info you want stored
+  const payload = {
+    specialty: "OB/GYN", // Hardcoded specialty for this page
+    questionId: questionObj.id,
+    questionText: questionObj.question,
+    selectedAnswer: selectedAnswer,
+    correctAnswer: questionObj.answer,
+    isCorrect: isCorrect,
+    timestamp: new Date().toISOString()
+  };
+
+  try {
+    const response = await fetch("/api/save-answers", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    const result = await response.json();
+    console.log("Answer saved to server:", result);
+  } catch (error) {
+    console.error("Error saving answer to server:", error);
+  }
+}
+*/
+
+/*
+=====================================================
+  Existing Function for index.html Navigation
 =====================================================
 */
 function navigateTo(url) {

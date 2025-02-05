@@ -306,3 +306,73 @@
       margin: 0.5rem auto;
     }
   }
+  
+  /*
+  ========================================================
+    6) New Navigation Styles (Responsive Hamburger Menu)
+  ========================================================
+  */
+  
+  /* 
+    Basic nav toggle (hamburger) styling 
+    - hidden on desktop, visible on mobile/tablet
+  */
+  .nav-toggle {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    display: none; /* We'll show this on smaller screens */
+  }
+  
+  /* The navigation links container */
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    gap: 1rem;
+  }
+  
+  /* Style the links */
+  .nav-links li a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links li a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+  
+  /* MOBILE: Show the hamburger, hide the full nav by default */
+  @media (max-width: 768px) {
+    .nav-toggle {
+      display: inline-block;
+      margin-right: 1rem; /* Some spacing if needed */
+    }
+  
+    /* 
+      We'll position the nav-links absolutely
+      so we can toggle .open
+    */
+    .nav-links {
+      position: absolute;
+      top: 3.5rem; /* just below the nav bar */
+      right: 1rem;
+      background: #fefefe;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      flex-direction: column;
+      display: none; /* hidden until toggled */
+      padding: 1rem;
+    }
+  
+    /* Show the menu when .open is added */
+    .nav-links.open {
+      display: flex; 
+    }
+  }

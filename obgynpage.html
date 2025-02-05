@@ -14,11 +14,19 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header / Nav (Optional) -->
+  <!-- Header with Responsive Nav -->
   <header>
     <nav class="top-nav">
-      <!-- If you have navigation links, include them here. -->
       <h2 class="visually-hidden">Main Navigation</h2>
+      <!-- Hamburger button for mobile -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+        &#9776;
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="index.html">Quizzes</a></li>
+      </ul>
     </nav>
   </header>
   
@@ -63,11 +71,22 @@
     <p>&copy; <span id="currentYear"></span> M & M Consulting. All rights reserved. Xamtac is the best.</p>
   </footer>
   
-  <!-- Scripts -->
+  <!-- Main Quiz Script -->
   <script src="scripts.js"></script>
   <script>
     // Dynamically update the year in the footer
     document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Toggle navigation for mobile
+    const navToggle = document.getElementById("nav-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    if (navToggle) {
+      navToggle.addEventListener("click", () => {
+        // Toggle the "open" class on the UL
+        navLinks.classList.toggle("open");
+      });
+    }
   </script>
 </body>
 </html>
