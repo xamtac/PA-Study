@@ -6,51 +6,52 @@
   <!-- Ensure mobile responsiveness -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Basic SEO Tags -->
-  <meta name="description" content="Test your knowledge of OB/GYN topics for the PANCE exam. Interactive quiz with progress tracking and real-time feedback." />
-  <meta name="keywords" content="OB/GYN, PANCE, Physician Assistant, quiz, exam, practice questions, obstetrics, gynecology" />
-  <meta name="author" content="Your Name or Organization" />
+  <meta name="description" content="Test your knowledge of OB/GYN topics for the PANCE exam. Interactive quiz with progress tracking and real-time feedback.">
+  <meta name="keywords" content="OB/GYN, PANCE, Physician Assistant, quiz, exam, practice questions, obstetrics, gynecology">
+  <meta name="author" content="Your Name or Organization">
   
   <!-- Link to the external CSS file -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Header / Nav (Optional) -->
   <header>
     <nav class="top-nav">
+      <!-- If you have navigation links, include them here. -->
       <h2 class="visually-hidden">Main Navigation</h2>
-      <!-- If you have menu links, place them here -->
     </nav>
   </header>
   
-  <!-- Wrap content in a container for better mobile flow -->
+  <!-- Main content area -->
   <main class="quiz-section">
     <h1>OB/GYN PANCE Questions</h1>
     
-    <!-- Progress label (updated with role for screen readers) -->
+    <!-- Displays quiz progress (e.g., "Question 1 of 10") -->
     <div class="progress" id="progress-label" aria-live="polite"></div>
 
-    <!-- The card container -->
+    <!-- The card container (includes front/back flipping) -->
     <div class="card-container">
       <div class="card" id="card">
         <!-- Front side of card -->
         <div class="card-face card-front" id="card-front">
           <div class="question-text" id="question-text">
-            <!-- Question text goes here -->
+            <!-- Question text injected via scripts.js -->
           </div>
           <div class="radio-container" id="radio-container">
-            <!-- Radio options go here -->
+            <!-- Multiple-choice options injected here -->
           </div>
         </div>
 
         <!-- Back side of card -->
         <div class="card-face card-back" id="card-back">
           <div class="answer-text" id="answer-text">
-            <!-- Correct/Incorrect + Explanation text goes here -->
+            <!-- Feedback (correct/incorrect) displayed here -->
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Action buttons -->
+    <!-- Action buttons for controlling the quiz -->
     <div class="buttons">
       <button id="submit-button" aria-label="Submit your answer">Submit Answer</button>
       <button id="next-button" disabled aria-label="Load the next question">Next Question</button>
@@ -62,11 +63,11 @@
     <p>&copy; <span id="currentYear"></span> Your Organization. All rights reserved.</p>
   </footer>
   
-  <!-- External JavaScript -->
+  <!-- Scripts -->
   <script src="scripts.js"></script>
   <script>
-    // Dynamically update the footer year
-    document.getElementById("currentYear").textContent = new Date().getFullYear();
+    // Dynamically update the year in the footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

@@ -1,267 +1,308 @@
 /* 
 ========================================================
-  Global & Existing Styles (Preserved)
+  1) Global & Existing Base Styles (Preserved + Updated)
 ========================================================
 */
-body {
+
+/* Remove margin/padding and default to a white background. 
+   We'll handle layout with containers rather than body as flex. */
+   body {
     margin: 0;
     padding: 0;
     background: #f7f7f7;
     font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-h1 {
-    margin-top: 20px;
-}
-
-.progress {
-    margin: 10px 0;
+  }
+  
+  /* Let headings breathe properly on all screens */
+  h1, h2, h3, h4, h5, h6 {
+    margin: 1rem 0 0.5rem;
+    padding: 0 1rem;
+    font-weight: bold;
+  }
+  
+  h1 {
+    font-size: 1.8rem; /* Slightly smaller default for better mobile fit */
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  
+  /* Basic progress label style */
+  .progress {
+    margin: 0.5rem 1rem 1rem;
     font-style: italic;
     color: #333;
-}
-
-/* Card container with perspective for Quiz pages */
-.card-container {
-    perspective: 1000px; /* Enables 3D flip effect */
-    width: 600px;
-    max-width: 90%;
-    margin: 0 auto;
-}
-
-.card {
-    position: relative;
-    width: 100%;
-    height: 250px;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
-/* When flipped, rotate around the X-axis 180deg */
-.card.flipped {
-    transform: rotateX(180deg);
-}
-
-/* Front & Back faces of the card */
-.card-face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden; /* Hide the backside when flipping */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    box-sizing: border-box;
-    border-radius: 5px;
-}
-
-.card-front {
-    background: #ffffff;
-}
-
-.card-back {
-    background: #f0f8ff;
-    transform: rotateX(180deg);
     text-align: center;
-}
-
-/* Updated to allow word-wrap and better mobile alignment */
-.question-text,
-.answer-text {
-    font-weight: bold;
-    margin-bottom: 10px;
-    word-wrap: break-word;   /* Allow wrapping of very long text */
-    overflow-wrap: break-word;
-    text-align: left;        /* Friendlier alignment on small screens */
-}
-
-.radio-container {
+  }
+  
+  /* Buttons container used across pages */
+  .buttons {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 20px;
-}
-
-label {
-    margin: 4px 0;
-}
-
-.buttons {
-    margin-top: 10px;
-}
-
-/* Global button styling */
-button {
-    margin: 0 5px;
-    padding: 10px 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
+  /* Buttons (blue by default) */
+  button {
+    margin: 0.5rem;
+    padding: 0.75rem 1.25rem;
     border: none;
     border-radius: 4px;
     background-color: #007BFF;
     color: #ffffff;
     font-weight: bold;
     cursor: pointer;
-}
-
-button:disabled {
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  button:hover:enabled {
+    background-color: #0056b3;
+  }
+  
+  button:disabled {
     background-color: #cccccc;
     cursor: default;
-}
-
-.result-correct {
-    color: green;
-}
-
-.result-incorrect {
-    color: red;
-}
-
-/* 
-========================================================
-  Original Specialty List Styles (Kept for Safety)
-========================================================
-*/
-.specialty-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.specialty-list li {
-  margin: 12px 0;
-  font-size: 1.1em;
-}
-
-.specialty-list a {
-  text-decoration: none;
-  color: #007BFF;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-.specialty-list a:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
-
-/* 
-========================================================
-  Container Styles (Used by index.html & Others)
-========================================================
-*/
-.page-container {
-  background-color: #ffffff;
-  margin-top: 30px;
-  padding: 20px;
-  width: 60%;
-  max-width: 800px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  flex: 0 0 auto; /* So it doesn't shrink abnormally with flex layout */
-}
-
-.page-container h1 {
-  text-align: center;
-  margin-bottom: 1em;
-}
-
-/* 
-========================================================
-  New Styles for the Button Layout on index.html
-========================================================
-*/
-.button-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.button-container button {
-  background-color: #4CAF50; /* A friendly green */
-  color: #fff;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  min-width: 180px; /* Keep buttons consistent in size */
-}
-
-.button-container button:hover {
-  background-color: #45a049; /* Slightly darker green on hover */
-}
-
-/*
-========================================================
-  Additional Mobile-Friendly / Layout Fixes
-========================================================
-*/
-
-/* Wrap the OB/GYN page quiz content in a responsive container */
-.quiz-section {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 1rem;
-  box-sizing: border-box;
-}
-
-/* Slightly adjust spacing for quiz buttons on narrow screens */
-.buttons button {
-  margin: 0.5rem 0.3rem;
-}
-
-/* Example .top-nav & .visually-hidden classes if needed */
-.top-nav {
-  padding: 1rem;
-  background: #fefefe;
-  text-align: center;
-}
-
-.visually-hidden {
-  position: absolute;
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  white-space: nowrap;
-  border: 0;
-}
-
-/*
-========================================================
-  Responsive Adjustments
-========================================================
-*/
-@media (max-width: 768px) {
-  /* Make the main container fit better on smaller tablets/phones */
-  .page-container {
-    width: 90%;
   }
-}
-
-@media (max-width: 600px) {
-  /* Stack specialty buttons vertically on very small screens */
-  .button-container button {
+  
+  /* 
+  ========================================================
+    2) Card & Quiz-Specific Styling
+  ========================================================
+  */
+  
+  /* Where the quiz content sits. 
+     We center it and limit max width for easy reading. */
+  .quiz-section {
+    max-width: 600px;
     width: 100%;
-    min-width: auto;
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
   }
-
-  /* Make quiz buttons full-width and centered on phone screens */
-  .buttons {
+  
+  /* 3D flip container for the question/answer card. */
+  .card-container {
+    perspective: 1000px; /* Enable 3D flip effect */
+    width: 100%;
+    margin: 1rem auto;
+  }
+  
+  /* The flipping card itself */
+  .card {
+    position: relative;
+    width: 100%;
+    height: auto; /* Let the content dictate height */
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    border-radius: 6px;
+  }
+  
+  /* Flip the card for back face reveal */
+  .card.flipped {
+    transform: rotateX(180deg);
+  }
+  
+  /* Front & Back faces of the card */
+  .card-face {
+    position: relative;
+    width: 100%;
+    backface-visibility: hidden;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 6px;
+    background: #fff;
+    min-height: 200px; /* Ensures a consistent card height */
+  }
+  
+  /* Back face rotates 180deg for flipping action */
+  .card-back {
+    transform: rotateX(180deg);
+    background: #f0f8ff; /* A subtle difference for the answer side */
+  }
+  
+  /* The question text & answer text can be long, 
+     so let's ensure wrapping and readability. */
+  .question-text,
+  .answer-text {
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Radio container for multiple-choice answers */
+  .radio-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  
+  .radio-container label {
+    display: flex;
     align-items: center;
+    margin: 0.25rem 0;
+    font-weight: normal;
+    cursor: pointer;
   }
-
-  .buttons button {
-    width: 90%;
-    max-width: 300px;
+  
+  /* Mark the correct/incorrect results with color */
+  .result-correct {
+    color: green;
   }
-}
+  
+  .result-incorrect {
+    color: red;
+  }
+  
+  /* 
+  ========================================================
+    3) Page Container & Specialty List (Index Page Styles)
+  ========================================================
+  */
+  .page-container {
+    background-color: #ffffff;
+    margin: 2rem auto;
+    padding: 20px;
+    width: 60%;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+  }
+  
+  .page-container h1 {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  
+  .specialty-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .specialty-list li {
+    margin: 12px 0;
+    font-size: 1.1em;
+  }
+  
+  .specialty-list a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .specialty-list a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+  
+  /* Buttons used on the index page to pick a specialty */
+  .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .button-container button {
+    background-color: #4CAF50;
+    min-width: 160px;
+  }
+  
+  .button-container button:hover {
+    background-color: #45a049;
+  }
+  
+  /* 
+  ========================================================
+    4) Top Nav & Footer 
+  ========================================================
+  */
+  .top-nav {
+    padding: 0.75rem;
+    background: #fefefe;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .site-footer {
+    text-align: center;
+    margin: 2rem auto 1rem;
+    color: #333;
+    font-size: 0.9rem;
+  }
+  
+  /* A utility class for hidden text 
+     (accessible to screen readers) */
+  .visually-hidden {
+    position: absolute !important;
+    height: 1px; 
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap; 
+    border: 0;
+  }
+  
+  /* 
+  ========================================================
+    5) Responsive Adjustments
+  ========================================================
+  */
+  @media (max-width: 768px) {
+    /* Make some headings smaller on tablets */
+    h1 {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+    }
+  
+    /* Constrain the page container on smaller devices */
+    .page-container {
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    /* Stack the index page specialty buttons vertically */
+    .button-container button {
+      width: 100%;
+      min-width: auto;
+    }
+  
+    /* The quiz layout: center and handle narrower screens */
+    .quiz-section {
+      width: 95%;
+      padding: 1rem 0.5rem;
+    }
+  
+    /* Adjust headings further on phones */
+    h1 {
+      font-size: 1.3rem;
+    }
+  
+    /* Let the card auto-size better */
+    .card {
+      min-height: 240px; /* Extra breathing room on small screens */
+    }
+  
+    /* Buttons stack or fill width on very small screens */
+    .buttons {
+      justify-content: center;
+    }
+  
+    .buttons button {
+      width: auto;
+      min-width: 120px; 
+      margin: 0.5rem auto;
+    }
+  }
