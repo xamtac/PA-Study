@@ -479,4 +479,484 @@
       ],
       "answer": "B"
     }
+    {
+        "id": 41,
+        "question": "A 34-year-old G3P3 presents with a 6-month history of progressively worsening pelvic pressure and urinary frequency. She denies urinary urgency or dysuria. On pelvic exam, a soft, bulging mass is noted in the anterior vaginal wall, which becomes more prominent with Valsalva maneuver. She tried Kegel exercises for 3 months with no relief. What is the next best step in management?",
+        "choices": [
+          "A. Pelvic floor muscle (Kegel) exercises",
+          "B. Midurethral sling surgery",
+          "C. Pessary fitting",
+          "D. Hysterectomy",
+          "E. Intermittent self-catheterization"
+        ],
+        "answer": "C"
+      },
+      {
+        "id": 42,
+        "question": "A 29-year-old G2P1 at 39 weeks’ gestation experiences spontaneous rupture of membranes and suddenly notices a loop of pulsatile cord protruding from the vagina. Fetal heart tracings show repetitive severe variable decelerations. What is the most appropriate immediate intervention?",
+        "choices": [
+          "A. Trendelenburg position and emergent cesarean delivery",
+          "B. Apply fundal pressure to expedite labor",
+          "C. Perform a fetal scalp pH sampling",
+          "D. Attempt manual rotation of the fetal head",
+          "E. Immediately administer oxytocin to augment contractions"
+        ],
+        "answer": "A"
+      },
+      {
+        "id": 43,
+        "question": "A 32-year-old woman has experienced secondary amenorrhea since a complicated dilation and curettage for retained placenta 6 months ago. She has progressively lighter and infrequent periods, as well as difficulty conceiving. A hysterosalpingogram shows multiple intrauterine adhesions. Which diagnosis best explains her condition?",
+        "choices": [
+          "A. Asherman syndrome",
+          "B. Sheehan syndrome",
+          "C. Polycystic ovary syndrome",
+          "D. Endometriosis",
+          "E. Chronic endometritis"
+        ],
+        "answer": "A"
+      },
+      {
+        "id": 44,
+        "question": "A 26-year-old woman at 24 weeks of gestation is undergoing routine prenatal care. She has no history of diabetes. What screening test is most commonly recommended between 24–28 weeks’ gestation to screen for gestational diabetes?",
+        "choices": [
+          "A. Fasting plasma glucose only",
+          "B. 2-hour oral glucose tolerance test (OGTT) with 75 g glucose",
+          "C. 1-hour 50 g glucose challenge test followed by 3-hour OGTT if abnormal",
+          "D. Hemoglobin A1c measurement only",
+          "E. Random plasma glucose at each prenatal visit"
+        ],
+        "answer": "C"
+      },
+      {
+        "id": 45,
+        "question": "A 31-year-old G2P2 had a significant postpartum hemorrhage requiring multiple blood transfusions. Two months later, she reports chronic fatigue, inability to produce breast milk, low blood pressure, and hyponatremia. Which diagnosis best explains her symptoms?",
+        "choices": [
+          "A. Pituitary adenoma",
+          "B. Sheehan syndrome",
+          "C. Postpartum depression",
+          "D. Addison disease",
+          "E. Type 2 diabetes insipidus"
+        ],
+        "answer": "B"
+      },
+      {
+        "id": 46,
+        "question": "A 34-year-old G3P2 with poorly controlled gestational diabetes is at 38 weeks. Ultrasound estimates the fetal weight at 4,500 g (9.9 lb). She is counseled regarding complications of fetal macrosomia. Which complication is most concerning during a trial of vaginal delivery?",
+        "choices": [
+          "A. Fetal chorioamnionitis",
+          "B. Shoulder dystocia",
+          "C. Complete uterine rupture",
+          "D. Oligohydramnios",
+          "E. Early decelerations on fetal monitoring"
+        ],
+        "answer": "B"
+      },
+      {
+        "id": 47,
+        "question": "A 52-year-old woman, two months post total hysterectomy for fibroids, presents with severe pelvic pain and bright red bleeding. Speculum exam reveals a large, protruding mass through the vaginal cuff with visible bowel loops. She is tachycardic and appears in moderate distress. What is the most appropriate next step?",
+        "choices": [
+          "A. Manual reduction in the office",
+          "B. Antibiotic therapy and observation",
+          "C. Urgent surgical exploration and repair",
+          "D. Vaginal packing and bed rest",
+          "E. High-dose IV corticosteroids"
+        ],
+        "answer": "C"
+      },
+      {
+        "id": 48,
+        "question": "A 23-year-old G1P0 at 39 weeks presents with a new-onset generalized tonic-clonic seizure. She has severe hypertension and hyperreflexia on exam. After airway stabilization, which medication is crucial to prevent further seizures?",
+        "choices": [
+          "A. Intravenous magnesium sulfate",
+          "B. Intravenous lorazepam",
+          "C. Oral methyldopa",
+          "D. Fosphenytoin",
+          "E. Intravenous labetalol"
+        ],
+        "answer": "A"
+      },
+      {
+        "id": 49,
+        "question": "A 28-year-old woman notes a well-circumscribed, mobile, rubbery 2 cm mass in her right breast that is non-tender. Mammogram and ultrasound suggest a likely fibroadenoma. No high-risk features are identified. Which next step is preferable for definitive diagnosis?",
+        "choices": [
+          "A. Core needle biopsy for confirmation",
+          "B. Immediate excisional biopsy of the entire mass",
+          "C. Fine-needle aspiration cytology only",
+          "D. Reassure and repeat clinical breast exam in 6 months",
+          "E. Initiate broad-spectrum antibiotics"
+        ],
+        "answer": "A"
+      },
+      {
+        "id": 50,
+        "question": "A 30-year-old G1P0 was diagnosed with a partial hydatidiform mole and underwent uterine evacuation. Six weeks later, her beta-hCG levels remain persistently elevated, and ultrasound shows a possible residual lesion. What is the most appropriate next step?",
+        "choices": [
+          "A. Hysterectomy",
+          "B. Chest CT to rule out metastases",
+          "C. Trial of IV immunoglobulins",
+          "D. Single-agent chemotherapy (e.g., methotrexate)",
+          "E. Repeat dilation and curettage only"
+        ],
+        "answer": "D"
+      },
+      {
+        "id": 51,
+        "question": "A 37-year-old G3P2 at 37 weeks is found to have a transverse fetal lie on ultrasound. She has mild, irregular contractions but no distress. Which is the best initial approach to managing this presentation?",
+        "choices": [
+          "A. Schedule cesarean delivery immediately",
+          "B. Attempt external cephalic version now",
+          "C. Continue to observe and reassess fetal lie in one week",
+          "D. Administer IV oxytocin to induce labor",
+          "E. Perform an emergency vaginal delivery"
+        ],
+        "answer": "C"
+      },
+      {
+        "id": 52,
+        "question": "A 39-year-old G2P1 at 12 weeks has no fetal heartbeat on Doppler. Transvaginal ultrasound confirms a nonviable embryo without cardiac activity. The cervix is closed, and the patient has no bleeding or cramping. Which diagnosis best fits this scenario?",
+        "choices": [
+          "A. Inevitable abortion",
+          "B. Threatened abortion",
+          "C. Missed abortion",
+          "D. Complete abortion",
+          "E. Septic abortion"
+        ],
+        "answer": "C"
+      },
+      {
+        "id": 53,
+        "question": "A 25-year-old G1P0 at 35 weeks presents with fever of 101.3°F, uterine tenderness, and fetal tachycardia on monitoring. Her membranes ruptured spontaneously 24 hours ago. Laboratory testing reveals leukocytosis. Which diagnosis is most likely?",
+        "choices": [
+          "A. Endometritis",
+          "B. Chorioamnionitis",
+          "C. Urinary tract infection",
+          "D. Placental abruption",
+          "E. Intrahepatic cholestasis of pregnancy"
+        ],
+        "answer": "B"
+      },
+      {
+        "id": 54,
+        "question": "A 29-year-old with infertility is undergoing gonadotropin therapy. Two weeks into treatment, she presents with rapid weight gain, abdominal distension, and dyspnea. Ultrasound reveals bilateral enlarged ovaries with multiple cysts and free fluid in the pelvis. What is the most likely diagnosis?",
+        "choices": [
+          "A. Ovarian hyperstimulation syndrome",
+          "B. Tubo-ovarian abscess",
+          "C. Ovarian torsion",
+          "D. Ectopic pregnancy",
+          "E. Ovarian malignancy"
+        ],
+        "answer": "A"
+      },
+      {
+        "id": 55,
+        "question": "A 30-year-old G3P2 at 34 weeks notes a sudden gush of fluid from her vagina. Speculum exam confirms fluid leaking from the cervical os, and she is afebrile with a reassuring fetal heart rate. She is diagnosed with PPROM. Which factor is key in managing suspected PPROM at 34 weeks?",
+        "choices": [
+          "A. Immediate induction of labor with oxytocin",
+          "B. Administration of broad-spectrum antibiotics",
+          "C. Urgent cesarean delivery",
+          "D. Administering intramuscular progesterone",
+          "E. Restrict maternal fluids to prevent polyhydramnios"
+        ],
+        "answer": "B"
+      },
+      {
+        "id": 56,
+        "question": "A 44-year-old woman reports intermenstrual bleeding for 2 months. Transvaginal ultrasound reveals a single focal lesion in the endometrial cavity. Hysteroscopic evaluation confirms a small, sessile growth on the endometrium. Which diagnosis is most likely?",
+        "choices": [
+          "A. Endometrial polyp",
+          "B. Adenomyosis",
+          "C. Endometrial hyperplasia without atypia",
+          "D. Endometrial carcinoma",
+          "E. Submucosal fibroid"
+        ],
+        "answer": "A"
+      },
+      {
+        "id": 57,
+        "question": "A 20-year-old primipara reports tearfulness, mood swings, and mild sadness starting around 4 days postpartum. She sleeps adequately, feels supported by family, and denies any thoughts of harming herself or her newborn. What is the most appropriate initial management?",
+        "choices": [
+          "A. Immediate initiation of antidepressants",
+          "B. Hospital admission for possible psychosis",
+          "C. Reassurance and observation (postpartum blues)",
+          "D. Schedule weekly psychiatric therapy sessions",
+          "E. Advise to stop breastfeeding"
+        ],
+        "answer": "C"
+      },
+      {
+        "id": 58,
+        "question": "A 2-day-old newborn develops mild jaundice. The mother is blood group B, Rh-positive, and the infant is group A, Rh-positive. The direct antiglobulin (Coombs) test is positive, but the newborn has stable hemoglobin and otherwise normal exam. What is the most likely cause?",
+        "choices": [
+          "A. Rh incompatibility",
+          "B. ABO incompatibility",
+          "C. G6PD deficiency",
+          "D. Physiologic neonatal jaundice",
+          "E. Sepsis-induced hemolysis"
+        ],
+        "answer": "B"
+      },
+      {
+        "id": 59,
+        "question": "A 36-year-old with a history of an 8 cm left adnexal cyst presents to the ER with acute onset of severe left-sided pelvic pain and nausea. Doppler ultrasound demonstrates significantly diminished ovarian blood flow. What is the most appropriate next step?",
+        "choices": [
+          "A. Immediate laparotomy for detorsion",
+          "B. Magnetic resonance imaging (MRI) of the pelvis",
+          "C. NSAIDs and observation for 24 hours",
+          "D. Oral contraceptive therapy to shrink the cyst",
+          "E. Administer broad-spectrum IV antibiotics"
+        ],
+        "answer": "A"
+      },
+      {
+        "id": 60,
+        "question": "A 32-year-old G2P1 with a prior low transverse cesarean scar is at 36 weeks in active labor. She suddenly experiences intense abdominal pain, fetal bradycardia, and loss of fetal station on exam. What is the most likely diagnosis?",
+        "choices": [
+          "A. Placental abruption",
+          "B. Uterine rupture",
+          "C. Cord prolapse",
+          "D. Vasa previa",
+          "E. Amniotic fluid embolism"
+        ],
+        "answer": "B"
+      },
+      {
+        "id": 61,
+        "question": "A 29-year-old woman has had three consecutive first-trimester miscarriages. She tests positive for anticardiolipin antibodies. Which therapy is recommended to reduce pregnancy loss in this condition?",
+        "choices": [
+          "A. Low-dose aspirin plus low molecular weight heparin",
+          "B. Oral methotrexate",
+          "C. High-dose IV immunoglobulins",
+          "D. Cervical cerclage placement",
+          "E. Progesterone suppositories"
+        ],
+        "answer": "A"
+      },
+      {
+        "id": 62,
+        "question": "A 30-year-old woman with epilepsy is concerned about teratogenic effects of her anti-seizure medication. She is currently taking valproate. Which congenital defect is most commonly linked to valproate use in pregnancy?",
+        "choices": [
+          "A. Transposition of the great arteries",
+          "B. Omphalocele",
+          "C. Neural tube defects (e.g., spina bifida)",
+          "D. Polydactyly",
+          "E. Cleft palate"
+        ],
+        "answer": "C"
+      },
+      {
+        "id": 63,
+        "question": "A 60-year-old woman complains of severe vulvar itching and burning for several months. On exam, the labia appear thin, white, and wrinkled with areas of excoriation, but no suspicious masses. Which is the most appropriate initial treatment?",
+        "choices": [
+          "A. High-potency topical corticosteroids",
+          "B. Topical antifungal cream",
+          "C. Surgical excision of the lesions",
+          "D. Topical estrogen therapy",
+          "E. Loop electrosurgical excision procedure (LEEP)"
+        ],
+        "answer": "A"
+      },
+      {
+        "id": 64,
+        "question": "A 69-year-old woman presents with a 3-month history of postmenopausal vaginal bleeding. On exam, there is a lesion on the upper posterior vaginal wall. Biopsy reveals squamous cell carcinoma of the vagina. Which primary risk factor is most associated with this malignancy?",
+        "choices": [
+          "A. HPV infection",
+          "B. Chronic lichen sclerosus",
+          "C. Ovarian hormone therapy",
+          "D. Nulliparity",
+          "E. Chronic candidiasis"
+        ],
+        "answer": "A"
+      },
+      {
+        "id": 65,
+        "question": "A 32-year-old G2P1 at 26 weeks has a 1-hour 50 g glucose challenge test reading of 180 mg/dL, which is elevated. What is the most appropriate next step?",
+        "choices": [
+          "A. Diagnose gestational diabetes immediately",
+          "B. Perform a 3-hour 100 g oral glucose tolerance test",
+          "C. Start insulin therapy without further testing",
+          "D. Obtain hemoglobin A1c level",
+          "E. Repeat the 1-hour test in one week"
+        ],
+        "answer": "B"
+      },
+      {
+        "id": 66,
+        "question": "A 29-year-old woman who is 2 weeks postpartum develops a painful, erythematous area on her left breast, accompanied by a fever of 101°F. She reports a history of mild rash when taking penicillin. She wishes to continue breastfeeding. Which antibiotic choice is most appropriate?",
+        "choices": [
+          "A. Clindamycin",
+          "B. Cefazolin",
+          "C. Dicloxacillin",
+          "D. Trimethoprim-sulfamethoxazole",
+          "E. Topical mupirocin only"
+        ],
+        "answer": "B"
+      },
+      {
+        "id": 67,
+        "question": "A 35-year-old G4P3 at 32 weeks is diagnosed with placenta previa on ultrasound. She also has a history of multiple prior cesarean deliveries. Her current imaging suggests possible placenta accreta. Which historical factor is most strongly associated with placenta accreta?",
+        "choices": [
+          "A. Multiparity",
+          "B. History of gestational diabetes",
+          "C. Previous low transverse cesarean section plus placenta previa",
+          "D. Chronic hypertension",
+          "E. Preeclampsia in a prior pregnancy"
+        ],
+        "answer": "C"
+      },
+      {
+        "id": 68,
+        "question": "A 29-year-old G1P0 with preexisting type 1 diabetes is concerned about fetal anomalies. She has difficulty maintaining euglycemia. Which congenital malformations are particularly associated with poorly controlled maternal diabetes?",
+        "choices": [
+          "A. Cleft lip and palate",
+          "B. Gastroschisis",
+          "C. Congenital heart defects (e.g., VSD, transposition)",
+          "D. Neural tube defects",
+          "E. Both C and D"
+        ],
+        "answer": "E"
+      },
+      {
+        "id": 69,
+        "question": "A 28-year-old woman, 4 months postpartum, presents with a recent onset of fatigue, palpitations, weight gain, and dry skin. Two months ago, she had hyperthyroid-like symptoms that resolved spontaneously. Her labs show elevated TSH, low T4, and negative thyroid peroxidase (TPO) antibodies. Which diagnosis is most likely?",
+        "choices": [
+          "A. Graves’ disease",
+          "B. Hashimoto thyroiditis",
+          "C. Subacute (De Quervain) thyroiditis",
+          "D. Postpartum (silent) thyroiditis",
+          "E. Pituitary adenoma"
+        ],
+        "answer": "D"
+      },
+      {
+        "id": 70,
+        "question": "A 17-year-old girl who has never received the HPV vaccine inquires about it. She is healthy, with no significant medical history. According to current guidelines, which recommendation is correct?",
+        "choices": [
+          "A. She is too old to begin HPV vaccination",
+          "B. Only a single dose is required for her age group",
+          "C. She should receive the full 3-dose HPV vaccine series",
+          "D. HPV vaccine is contraindicated if she is sexually active",
+          "E. The vaccine has no benefit after sexual activity has started"
+        ],
+        "answer": "C"
+      },
+      {
+        "id": 71,
+        "question": "A 48-year-old woman presents with painless postmenopausal bleeding for one week. She had her last menstrual period 2 years ago. Transvaginal ultrasound shows an endometrial stripe measuring 7 mm. Which next step is most appropriate?",
+        "choices": [
+          "A. Repeat ultrasound in 1 month",
+          "B. Start high-dose progestins empirically",
+          "C. Endometrial sampling/biopsy",
+          "D. CT scan of the abdomen/pelvis",
+          "E. Transvaginal ultrasound is sufficient, no further workup"
+        ],
+        "answer": "C"
+      },
+      {
+        "id": 72,
+        "question": "A 32-year-old G2P1 at 8 weeks gestation presents with severe nausea, vomiting, a 5 lb weight loss over one week, and ketonuria. She is mildly dehydrated but hemodynamically stable. Which is the best initial management?",
+        "choices": [
+          "A. Oral ondansetron and observation",
+          "B. IV fluids plus antiemetics",
+          "C. Immediate dilation and curettage",
+          "D. Parenteral nutrition",
+          "E. Corticosteroid therapy"
+        ],
+        "answer": "B"
+      },
+      {
+        "id": 73,
+        "question": "A 27-year-old woman with postpartum mastitis has been on appropriate oral antibiotics for 3 days. She continues to have fever and now palpates a fluctuant mass in her breast. What is the next best step?",
+        "choices": [
+          "A. Continue oral antibiotics for one more week",
+          "B. Incision and drainage of the abscess",
+          "C. Stop breastfeeding immediately",
+          "D. High-dose IV antibiotics alone",
+          "E. Obtain a breast ultrasound after completing antibiotics"
+        ],
+        "answer": "B"
+      },
+      {
+        "id": 74,
+        "question": "A 36-year-old G2P1 at 36 weeks has a persistent breech presentation. She has no contraindications to a vaginal delivery but is concerned about the risks. Which option is most appropriate to try converting the fetus to a cephalic presentation?",
+        "choices": [
+          "A. Immediate cesarean section without trial",
+          "B. External cephalic version if feasible",
+          "C. Vaginal breech delivery is always recommended",
+          "D. Schedule induction of labor at 37 weeks",
+          "E. Pelvic MRI to measure pelvic outlet before any attempt"
+        ],
+        "answer": "B"
+      },
+      {
+        "id": 75,
+        "question": "A 30-year-old in active labor is noted to have the fetal head at 0 station, a fully effaced cervix, and regular contractions. Which statement best describes the location of the presenting fetal part?",
+        "choices": [
+          "A. 2 cm above the ischial spines",
+          "B. 0 station at the level of the ischial spines",
+          "C. 2 cm below the ischial spines",
+          "D. Floating, with no engagement",
+          "E. Not determined by the cervical exam"
+        ],
+        "answer": "B"
+      },
+      {
+        "id": 76,
+        "question": "A 27-year-old G2P0 at 22 weeks has a history of a LEEP procedure for high-grade CIN. Transvaginal ultrasound reveals a cervical length of 1.8 cm with funneling. She has no contractions or bleeding. What is the best intervention to prevent pregnancy loss?",
+        "choices": [
+          "A. Serial transvaginal ultrasounds only",
+          "B. McDonald cerclage",
+          "C. Administer IV magnesium sulfate",
+          "D. Immediate induction of labor",
+          "E. Bed rest until viability"
+        ],
+        "answer": "B"
+      },
+      {
+        "id": 77,
+        "question": "A 34-year-old G2P1 at 36 weeks is found to have oligohydramnios (amniotic fluid index of 4 cm). Which underlying factor is most commonly associated with oligohydramnios in the third trimester?",
+        "choices": [
+          "A. Fetal macrosomia",
+          "B. Fetal polyuria due to diabetes insipidus",
+          "C. Placental insufficiency",
+          "D. High fetal cardiac output states",
+          "E. Polyhydramnios in the cotwin"
+        ],
+        "answer": "C"
+      },
+      {
+        "id": 78,
+        "question": "A 25-year-old G1P0 in active labor has unknown Group B Streptococcus (GBS) status. She has been ruptured for over 20 hours but has no fever or other risk factors. What is the best course of action for intrapartum GBS prophylaxis?",
+        "choices": [
+          "A. Do not administer antibiotics unless fever develops",
+          "B. Obtain GBS rapid PCR test and wait for results",
+          "C. Start IV penicillin for intrapartum GBS prophylaxis",
+          "D. Perform an immediate cesarean delivery",
+          "E. High-dose IV gentamicin"
+        ],
+        "answer": "C"
+      },
+      {
+        "id": 79,
+        "question": "A 33-year-old pregnant woman at 32 weeks is found to have a fetus estimated to be >90th percentile for gestational age. She is normotensive and passed her glucose screening test. Which maternal factor is most likely contributing to fetal macrosomia?",
+        "choices": [
+          "A. Maternal hypertension",
+          "B. Mild maternal obesity",
+          "C. Chronic kidney disease",
+          "D. Poor weight gain during pregnancy",
+          "E. Chronic maternal hyperthyroidism"
+        ],
+        "answer": "B"
+      },
+      {
+        "id": 80,
+        "question": "A 13-year-old girl is concerned because she has developed breast buds (thelarche) but minimal pubic hair (pubarche). Menarche has not yet occurred. Which statement accurately describes normal pubertal progression?",
+        "choices": [
+          "A. Pubic hair typically appears before breast development",
+          "B. Breast development can precede pubic hair by over a year",
+          "C. Pubic hair is solely dependent on ovarian estrogen",
+          "D. Menarche always occurs before pubarche",
+          "E. Thelarche and adrenarche typically occur simultaneously"
+        ],
+        "answer": "B"
+      }
   ]
