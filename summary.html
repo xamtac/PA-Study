@@ -2,76 +2,72 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>OB/GYN Summary Grid</title>
+  <title>OB/GYN Quiz Summary</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Summary of OB/GYN quiz results in a grid.">
   <meta name="keywords" content="OB/GYN, PANCE, quiz, results, summary">
   <meta name="author" content="Your Name or Organization">
 
-  <!-- Link your existing CSS for consistent styling -->
+  <!-- Link to shared stylesheet -->
   <link rel="stylesheet" href="style.css">
-
-  <!-- Additional inline CSS for the clickable grid squares -->
-  <style>
-    /* Container for the page content */
-    .summary-container {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      text-align: center;
-    }
-    .summary-container h1 {
-      margin-bottom: 1rem;
-    }
-
-    /* The grid that holds the question squares */
-    .question-grid {
-      display: grid;
-      grid-template-columns: repeat(10, 40px); /* 10 squares per row */
-      grid-gap: 10px;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-
-    /* Base style for each square */
-    .question-square {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 4px;
-      color: #fff;
-      font-weight: bold;
-      font-size: 0.85rem;
-      cursor: pointer; /* pointer cursor to indicate it's clickable */
-    }
-
-    /* Colors for different states */
-    .correct-square {
-      background-color: green;
-    }
-    .incorrect-square {
-      background-color: red;
-    }
-    .not-answered-square {
-      background-color: gray;
-    }
-  </style>
 </head>
 <body>
-  <div class="summary-container">
+  <!-- Begin Updated Navigation Bar -->
+  <header>
+    <nav class="top-nav" role="navigation" aria-label="Main navigation">
+      <h2 class="visually-hidden">Main Navigation</h2>
+
+      <!-- Brand or Title (left side) -->
+      <div class="nav-brand">
+        <a href="home.html" aria-label="Go to home page">M & M Consulting</a>
+      </div>
+
+      <!-- Hamburger button (mobile) -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        &#9776;
+      </button>
+
+      <!-- Nav links -->
+      <ul class="nav-links" id="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="index.html">Quizzes</a></li>
+        <li><a href="summary.html">OB/GYN Quiz Summary</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- End Updated Navigation Bar -->
+
+  <main class="summary-container">
     <h1>OB/GYN Quiz Summary</h1>
     <p>Click a square to jump to that question.</p>
 
-    <!-- Grid container -->
+    <!-- Grid container for question squares -->
     <div class="question-grid" id="questionGrid">
-      <!-- Squares injected by JavaScript -->
+      <!-- Squares are dynamically injected by JS below -->
     </div>
-  </div>
+  </main>
 
-  <!-- Script to build the grid and handle click events -->
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; <span id="currentYear"></span> M & M Consulting. All rights reserved. Xamtac is the best.</p>
+  </footer>
+
+  <!-- Script to build the grid and handle nav toggle -->
   <script>
+    // Dynamically set current year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Mobile nav toggler
+    const navToggle = document.getElementById("nav-toggle");
+    const navLinks = document.getElementById("nav-links");
+    if (navToggle) {
+      navToggle.addEventListener("click", () => {
+        const expanded = navToggle.getAttribute("aria-expanded") === "true";
+        navToggle.setAttribute("aria-expanded", String(!expanded));
+        navLinks.classList.toggle("open");
+      });
+    }
+
     /**
      * Build a clickable grid of squares:
      *  - Green for correct
@@ -80,11 +76,11 @@
      *
      * Clicking a square:
      *  - Sets localStorage.currentIndex to that question's index
-     *  - Redirects to obgynpage.html
+     *  - Redirects to obgynpage.html (or the relevant quiz page)
      */
     async function buildSummaryGrid() {
       try {
-        // Fetch the quiz questions
+        // Fetch the quiz questions (update the .json path if needed)
         const response = await fetch("obgyn-questions.json");
         const questions = await response.json();
 
@@ -110,7 +106,7 @@
 
           // Determine square color
           if (userAnswer == null) {
-            // Not answered yet
+            // Not answered
             square.classList.add("not-answered-square");
           } else if (userAnswer === correctAnswer) {
             // Correct
@@ -123,16 +119,12 @@
           // Label the square with the question number (1-based)
           square.textContent = index + 1;
 
-          // Make the square clickable
+          // Click handler to jump to that question in obgynpage.html
           square.addEventListener("click", () => {
-            // Set the currentIndex in localStorage
             localStorage.setItem("currentIndex", index);
-
-            // Redirect to obgynpage to load that question
             window.location.href = "obgynpage.html";
           });
 
-          // Add square to the grid
           gridContainer.appendChild(square);
         });
       } catch (error) {

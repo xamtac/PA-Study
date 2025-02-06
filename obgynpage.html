@@ -8,45 +8,52 @@
   <!-- Basic SEO Tags -->
   <meta name="description" content="Test your knowledge of OB/GYN topics for the PANCE exam. Interactive quiz with progress tracking and real-time feedback.">
   <meta name="keywords" content="OB/GYN, PANCE, Physician Assistant, quiz, exam, practice questions, obstetrics, gynecology">
-  <meta name="author" content="Your Name or Organization">
-  
+  <meta name="author" content="M & M Consulting">
+
   <!-- Link to the external CSS file -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Header with Responsive Nav -->
   <header>
-    <nav class="top-nav">
+    <nav class="top-nav" role="navigation" aria-label="Main navigation">
+      <!-- Visually hidden heading for screen readers -->
       <h2 class="visually-hidden">Main Navigation</h2>
-      <!-- Hamburger button for mobile -->
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+
+      <!-- Brand or Title (left side) -->
+      <div class="nav-brand">
+        <a href="home.html" aria-label="Go to home page">M & M Consulting</a>
+      </div>
+
+      <!-- Hamburger button for mobile (right side) -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
         &#9776;
       </button>
 
       <ul class="nav-links" id="nav-links">
         <li><a href="home.html">Home</a></li>
         <li><a href="index.html">Quizzes</a></li>
-        <li><a href="summary.html">OB/GYM Quiz Summary</a></li>
+        <li><a href="summary.html">OB/GYN Quiz Summary</a></li>
       </ul>
     </nav>
   </header>
-  
+
   <!-- Main content area -->
   <main class="quiz-section">
     <h1>OB/GYN PANCE Questions</h1>
-    
+
     <!-- Displays quiz progress (e.g., "Question 1 of 10") -->
     <div class="progress" id="progress-label" aria-live="polite"></div>
 
     <!-- The card container (includes front/back flipping) -->
-    <div class="card-container">
-      <div class="card" id="card">
+    <div class="card-container" id="flashcard-container">
+      <div class="card" id="card" aria-live="polite">
         <!-- Front side of card -->
         <div class="card-face card-front" id="card-front">
           <div class="question-text" id="question-text">
             <!-- Question text injected via scripts.js -->
           </div>
-          <div class="radio-container" id="radio-container">
+          <div class="radio-container" id="radio-container" role="radiogroup" aria-labelledby="question-text">
             <!-- Multiple-choice options injected here -->
           </div>
         </div>
@@ -58,12 +65,12 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Action buttons for controlling the quiz -->
-    <div class="buttons">
-      <button id="submit-button" aria-label="Submit your answer">Submit Answer</button>
-      <button id="next-button" disabled aria-label="Load the next question">Next Question</button>
+      <!-- Action buttons for controlling the quiz (placed directly under the card) -->
+      <div class="buttons">
+        <button id="submit-button" aria-label="Submit your answer">Submit Answer</button>
+        <button id="next-button" disabled aria-label="Load the next question">Next Question</button>
+      </div>
     </div>
   </main>
 
@@ -71,7 +78,7 @@
   <footer class="site-footer">
     <p>&copy; <span id="currentYear"></span> M & M Consulting. All rights reserved. Xamtac is the best.</p>
   </footer>
-  
+
   <!-- Main Quiz Script -->
   <script src="scripts.js"></script>
   <script>
@@ -84,7 +91,8 @@
 
     if (navToggle) {
       navToggle.addEventListener("click", () => {
-        // Toggle the "open" class on the UL
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!expanded));
         navLinks.classList.toggle("open");
       });
     }
