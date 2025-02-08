@@ -1,6 +1,6 @@
 /*
 ========================================================
-  1) Global & Existing Base Styles (Preserved + Updated)
+  1) Global & Existing Base Styles
 ========================================================
 */
 body {
@@ -17,7 +17,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 1.8rem; /* Slightly smaller default for better mobile fit */
+  font-size: 1.8rem; 
   text-align: center;
   margin-top: 1.5rem;
 }
@@ -81,7 +81,7 @@ button:disabled {
   box-sizing: border-box;
 }
 
-/* Card container: perspective and improved UI */
+/* Card container: perspective */
 .card-container {
   perspective: 1000px;
   width: 100%;
@@ -91,17 +91,14 @@ button:disabled {
   align-items: center;
 }
 
-/* Enhanced flashcard styling */
+/* Flashcard styling */
 .card {
   position: relative;
   width: 100%;
-  /* Allow height to grow with content and ensure backface is fully visible */
-  height: auto;
   transition: transform 0.6s;
   transform-style: preserve-3d;
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  /* Ensures content on either face won’t be cut off */
   overflow: visible;
 }
 
@@ -110,10 +107,6 @@ button:disabled {
 }
 
 .card-face {
-  /* 
-    For a smooth flip, maintain the same position. 
-    Let each face expand based on content.
-  */
   position: relative;
   width: 100%;
   backface-visibility: hidden;
@@ -147,7 +140,7 @@ button:disabled {
   margin-bottom: 1rem;
 }
 
-/* Improved choice formatting */
+/* Choice labels */
 .radio-container label {
   display: inline-flex;
   align-items: center;
@@ -176,7 +169,7 @@ button:disabled {
 
 /*
 ========================================================
-  3) Page Container & Specialty List (Index Page Styles)
+  3) Page Container & Specialty List
 ========================================================
 */
 .page-container {
@@ -244,7 +237,7 @@ button:disabled {
 */
 .top-nav {
   display: flex;
-  justify-content: space-between; /* Brand on left, hamburger on right */
+  justify-content: space-between;
   align-items: center;
   padding: 0.75rem;
   background: #fefefe;
@@ -282,7 +275,7 @@ button:disabled {
 
 /*
 ========================================================
-  5) Responsive Adjustments for Layout
+  5) Responsive Adjustments
 ========================================================
 */
 @media (max-width: 768px) {
@@ -297,7 +290,6 @@ button:disabled {
 }
 
 @media (max-width: 600px) {
-  /* Specialty buttons stack vertically */
   .button-container button {
     width: 100%;
     min-width: auto;
@@ -334,7 +326,7 @@ button:disabled {
   border: none;
   color: #333;
   cursor: pointer;
-  display: none; /* Hidden on desktop; shown on mobile/tablet */
+  display: none; 
 }
 
 .nav-links {
@@ -357,7 +349,6 @@ button:disabled {
   text-decoration: underline;
 }
 
-/* Mobile behavior */
 @media (max-width: 768px) {
   .nav-toggle {
     display: inline-block;
@@ -385,7 +376,7 @@ button:disabled {
 
 /*
 ========================================================
-  7) Summary Page-Specific Grid Styles
+  7) Summary Page: Grid Styles
 ========================================================
 */
 .summary-container {
@@ -399,7 +390,6 @@ button:disabled {
   margin-bottom: 1rem;
 }
 
-/* Default grid for desktops/tablets */
 .question-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
@@ -408,7 +398,6 @@ button:disabled {
   margin-top: 2rem;
 }
 
-/* Base style for each square */
 .question-square {
   width: 40px;
   height: 40px;
@@ -423,7 +412,6 @@ button:disabled {
   box-sizing: border-box;
 }
 
-/* Colors for different states */
 .correct-square {
   background-color: green;
 }
@@ -436,9 +424,63 @@ button:disabled {
   background-color: gray;
 }
 
-/* On mobile, force 5 squares per row for a nicer layout */
 @media (max-width: 600px) {
   .question-grid {
     grid-template-columns: repeat(5, 1fr);
   }
+}
+
+/*
+========================================================
+  8) Study Guides Page
+========================================================
+*/
+.study-guides-container {
+  margin-top: 2rem;
+}
+
+.study-guides-container details {
+  margin: 1rem 0;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.study-guides-container summary {
+  cursor: pointer;
+  padding: 0.75rem;
+  font-weight: bold;
+  outline: none;
+}
+
+.study-guides-container ul {
+  margin: 0;
+  padding: 0 1.25rem 1rem 1.25rem;
+  list-style-type: disc;
+}
+
+.study-guides-container li {
+  margin: 0.5rem 0;
+}
+
+/*
+========================================================
+  9) New Class for OB/GYN Study Guide Landing
+========================================================
+*/
+.study-guide-landing {
+  max-width: 900px;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.study-guide-landing h2 {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+}
+
+.study-guide-landing ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
 }

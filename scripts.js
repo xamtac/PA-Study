@@ -1,10 +1,12 @@
+"use strict";
+
 /*
 =====================================================
-  Existing Quiz Functionality (Preserved)
+  Quiz Functionality for OB/GYN (and potentially others)
 =====================================================
 */
 
-// DOM elements (These will be null on index.html, but that's harmless)
+// DOM elements (will be null on non-quiz pages)
 const progressLabel = document.getElementById("progress-label");
 const card = document.getElementById("card");
 const cardFront = document.getElementById("card-front");
@@ -16,7 +18,7 @@ const submitButton = document.getElementById("submit-button");
 const nextButton = document.getElementById("next-button");
 
 // State variables
-let QUESTIONS = [];         // Will fetch from obgyn-questions.json
+let QUESTIONS = [];  // Loaded from obgyn-questions.json
 let currentIndex = 0;
 let score = 0;
 let cardFlipped = false;
@@ -26,13 +28,13 @@ let selectedAnswer = null;
 let userAnswers = {};
 
 /**
- * Load any saved state from localStorage
+ * Load quiz state from localStorage.
  */
 function loadStateFromLocalStorage() {
   const savedIndex = localStorage.getItem("currentIndex");
   const savedScore = localStorage.getItem("score");
   const savedAnswers = localStorage.getItem("userAnswers");
-  
+
   if (savedIndex !== null) {
     currentIndex = parseInt(savedIndex, 10);
   }
@@ -45,7 +47,7 @@ function loadStateFromLocalStorage() {
 }
 
 /**
- * Save the current quiz state to localStorage
+ * Save the current quiz state to localStorage.
  */
 function saveStateToLocalStorage() {
   localStorage.setItem("currentIndex", currentIndex);
@@ -54,7 +56,7 @@ function saveStateToLocalStorage() {
 }
 
 /**
- * Load questions from obgyn-questions.json, then initialize quiz
+ * Fetch questions from obgyn-questions.json, then initialize.
  */
 async function fetchQuestionsAndInitialize() {
   try {
@@ -64,7 +66,7 @@ async function fetchQuestionsAndInitialize() {
     loadStateFromLocalStorage();
     loadQuestion();
   } catch (err) {
-    console.error("Error loading questions.json:", err);
+    console.error("Error loading obgyn-questions.json:", err);
     if (progressLabel) {
       progressLabel.textContent = "Error loading questions.";
     }
@@ -75,19 +77,19 @@ async function fetchQuestionsAndInitialize() {
  * Load the current question onto the front of the card.
  */
 function loadQuestion() {
-  if (!QUESTIONS.length) return; // If no questions loaded, just bail out
+  if (!QUESTIONS.length) return; 
   if (currentIndex >= QUESTIONS.length) {
     endQuiz();
     return;
   }
 
-  // If the card is flipped from the previous question, reset it
+  // Reset flipped state if needed
   if (card && cardFlipped) {
     card.classList.remove("flipped");
     cardFlipped = false;
   }
 
-  // Clear previous radio buttons
+  // Clear previous options
   if (radioContainer) {
     radioContainer.innerHTML = "";
   }
@@ -101,16 +103,15 @@ function loadQuestion() {
     questionText.textContent = q.question;
   }
 
-  // Create radio buttons for each choice
+  // Render multiple-choice options
   if (radioContainer) {
     q.choices.forEach((choice, idx) => {
       const label = document.createElement("label");
-      label.style.cursor = "pointer";
-
       const input = document.createElement("input");
+
       input.type = "radio";
       input.name = "answer";
-      input.value = String.fromCharCode(65 + idx); // 'A', 'B', 'C', 'D'...
+      input.value = String.fromCharCode(65 + idx); // 'A', 'B', 'C', 'D', etc.
       input.onclick = () => {
         selectedAnswer = input.value;
       };
@@ -121,7 +122,7 @@ function loadQuestion() {
     });
   }
 
-  // Buttons
+  // Button states
   if (submitButton) submitButton.disabled = false;
   if (nextButton) nextButton.disabled = true;
   if (answerText) {
@@ -131,7 +132,7 @@ function loadQuestion() {
 }
 
 /**
- * Check the user's answer and flip the card to show correct/incorrect.
+ * Check the user's selected answer and flip the card with feedback.
  */
 function submitAnswer() {
   if (selectedAnswer === null) {
@@ -148,48 +149,42 @@ function submitAnswer() {
   const currentQuestion = QUESTIONS[currentIndex];
   const correct = currentQuestion.answer;
 
-  // Record this answer in userAnswers
+  // Record this answer
   userAnswers[currentQuestion.id] = selectedAnswer;
 
-  let resultStr, resultClass;
-  let isCorrect = false;
-
+  let resultStr;
+  let resultClass;
   if (selectedAnswer === correct) {
     score++;
     resultStr = `Correct! You chose ${selectedAnswer}.`;
     resultClass = "result-correct";
-    isCorrect = true;
   } else {
-    resultStr = `Incorrect. You chose ${selectedAnswer}, correct is ${correct}.`;
+    resultStr = `Incorrect. You chose ${selectedAnswer}; the correct answer is ${correct}.`;
     resultClass = "result-incorrect";
   }
 
-  // Fill the back side with result
   if (answerText) {
     answerText.textContent = resultStr;
     answerText.classList.add(resultClass);
   }
 
-  // Flip the card
+  // Flip card
   if (card) {
     card.classList.add("flipped");
     cardFlipped = true;
   }
 
-  // Enable Next button
+  // Enable Next
   if (nextButton) {
     nextButton.disabled = false;
   }
 
-  // Save state (currentIndex, score, userAnswers) to localStorage
+  // Save state
   saveStateToLocalStorage();
-
-  // COMMENTED OUT: Code to send the current answer to a server
-  // saveAnswerToServer(currentQuestion, selectedAnswer, isCorrect);
 }
 
 /**
- * Move on to the next question.
+ * Load the next question.
  */
 function nextQuestion() {
   currentIndex++;
@@ -198,7 +193,7 @@ function nextQuestion() {
 }
 
 /**
- * Show final score and disable further interactions.
+ * End of the quiz: show final score.
  */
 function endQuiz() {
   if (progressLabel) {
@@ -220,11 +215,10 @@ function endQuiz() {
   if (nextButton) {
     nextButton.disabled = true;
   }
-  // Optionally clear or keep state:
-  // localStorage.clear(); // Uncomment if you want a fresh start each time
+  // Optionally clear local storage here if you want a fresh start each time.
 }
 
-// Event listeners (only relevant on quiz pages)
+// Event listeners for quiz pages
 if (submitButton) {
   submitButton.addEventListener("click", submitAnswer);
 }
@@ -232,47 +226,14 @@ if (nextButton) {
   nextButton.addEventListener("click", nextQuestion);
 }
 
-// Initialize quiz if relevant elements exist (for OB/GYN page, etc.)
+// Auto-initialize quiz if relevant DOM elements exist
 if (progressLabel && card) {
   fetchQuestionsAndInitialize();
 }
 
 /*
 =====================================================
-  (Commented-Out) Function for storing each question server-side
-=====================================================
-*/
-
-/*
-async function saveAnswerToServer(questionObj, selectedAnswer, isCorrect) {
-  // Build a payload with any info you want stored
-  const payload = {
-    specialty: "OB/GYN", // Hardcoded specialty for this page
-    questionId: questionObj.id,
-    questionText: questionObj.question,
-    selectedAnswer: selectedAnswer,
-    correctAnswer: questionObj.answer,
-    isCorrect: isCorrect,
-    timestamp: new Date().toISOString()
-  };
-
-  try {
-    const response = await fetch("/api/save-answers", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-    const result = await response.json();
-    console.log("Answer saved to server:", result);
-  } catch (error) {
-    console.error("Error saving answer to server:", error);
-  }
-}
-*/
-
-/*
-=====================================================
-  Existing Function for index.html Navigation
+  Reusable Navigation Function
 =====================================================
 */
 function navigateTo(url) {
