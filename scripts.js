@@ -16,6 +16,7 @@ const radioContainer = document.getElementById("radio-container");
 const answerText = document.getElementById("answer-text");
 const submitButton = document.getElementById("submit-button");
 const nextButton = document.getElementById("next-button");
+const backButton = document.getElementById("back-button");
 
 // State variables
 let QUESTIONS = [];  // Loaded from obgyn-questions.json
@@ -77,7 +78,7 @@ async function fetchQuestionsAndInitialize() {
  * Load the current question onto the front of the card.
  */
 function loadQuestion() {
-  if (!QUESTIONS.length) return; 
+  if (!QUESTIONS.length) return;
   if (currentIndex >= QUESTIONS.length) {
     endQuiz();
     return;
@@ -122,12 +123,21 @@ function loadQuestion() {
     });
   }
 
-  // Button states
+  // Reset button states for new question
   if (submitButton) submitButton.disabled = false;
   if (nextButton) nextButton.disabled = true;
   if (answerText) {
     answerText.textContent = "";
     answerText.className = "answer-text";
+  }
+
+  // Enable/disable Back button
+  if (backButton) {
+    if (currentIndex === 0) {
+      backButton.disabled = true;
+    } else {
+      backButton.disabled = false;
+    }
   }
 }
 
@@ -174,7 +184,7 @@ function submitAnswer() {
     cardFlipped = true;
   }
 
-  // Enable Next
+  // Enable Next button
   if (nextButton) {
     nextButton.disabled = false;
   }
@@ -190,6 +200,17 @@ function nextQuestion() {
   currentIndex++;
   saveStateToLocalStorage();
   loadQuestion();
+}
+
+/**
+ * NEW: Load the previous question.
+ */
+function previousQuestion() {
+  if (currentIndex > 0) {
+    currentIndex--;
+    saveStateToLocalStorage();
+    loadQuestion();
+  }
 }
 
 /**
@@ -215,6 +236,9 @@ function endQuiz() {
   if (nextButton) {
     nextButton.disabled = true;
   }
+  if (backButton) {
+    backButton.disabled = true;
+  }
   // Optionally clear local storage here if you want a fresh start each time.
 }
 
@@ -224,6 +248,9 @@ if (submitButton) {
 }
 if (nextButton) {
   nextButton.addEventListener("click", nextQuestion);
+}
+if (backButton) {
+  backButton.addEventListener("click", previousQuestion);
 }
 
 // Auto-initialize quiz if relevant DOM elements exist
