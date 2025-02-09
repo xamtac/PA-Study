@@ -3,33 +3,169 @@
 <head>
   <meta charset="UTF-8" />
   <title>OB/GYN PANCE Quiz | Comprehensive Practice</title>
-  <!-- Ensure mobile responsiveness -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Basic SEO Tags -->
-  <meta name="description" content="Test your knowledge of OB/GYN topics for the PANCE exam. Interactive quiz with progress tracking and real-time feedback.">
-  <meta name="keywords" content="OB/GYN, PANCE, Physician Assistant, quiz, exam, practice questions, obstetrics, gynecology">
+  <meta name="description" content="Test your knowledge of OB/GYN topics for the PANCE exam.">
+  <meta name="keywords" content="OB/GYN, PANCE, quiz">
   <meta name="author" content="M & M Consulting">
 
-  <!-- Link to the external CSS file -->
+  <!-- Existing CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* --- Chat panel base styling (unchanged) --- */
+    #chatPanel {
+      position: fixed;
+      top: 0;
+      right: -350px;
+      width: 350px;
+      height: 100%;
+      background-color: #f9f9f9;
+      border-left: 1px solid #ccc;
+      box-shadow: -3px 0 5px rgba(0,0,0,0.2);
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      z-index: 9999;
+      font-family: Arial, sans-serif;
+    }
+    #chatPanel.open {
+      right: 0;
+    }
+    #chatHeader {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #chatHeader h2 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+    #closeChatBtn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    #chatBody {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.75rem;
+    }
+    #chatFooter {
+      padding: 0.5rem;
+      border-top: 1px solid #ccc;
+    }
+    #chatInput {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      resize: vertical;
+    }
+    #sendChatBtn {
+      width: 100%;
+      padding: 0.5rem;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+    #sendChatBtn:hover {
+      background-color: #0056b3;
+    }
+    .chat-message {
+      margin: 0.5rem 0;
+      white-space: pre-wrap;
+    }
+    .chat-message.user {
+      text-align: right;
+      color: #333;
+    }
+    .chat-message.gpt {
+      text-align: left;
+      color: #444;
+    }
+
+    /* --- Settings panel styling --- */
+    #settingsContainer {
+      display: none;
+      border-top: 1px solid #ccc;
+      padding: 0.75rem;
+    }
+    #settingsContainer.open {
+      display: block;
+    }
+    #settingsContainer label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-weight: bold;
+    }
+    #settingsContainer input[type="text"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    #saveSettingsBtn {
+      width: 100%;
+      padding: 0.5rem;
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+    #saveSettingsBtn:hover {
+      background-color: #218838;
+    }
+    #settingsMsg {
+      font-size: 0.9rem;
+      color: #d9534f; /* a red-ish color for error or notice */
+      margin-top: 0.5rem;
+      display: none;
+    }
+
+    /* --- Loading Spinner for “thinking” animation --- */
+    .loading-spinner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      margin: 0.5rem 0;
+    }
+    .loading-spinner .spinner {
+      border: 4px solid #ccc;       /* Light gray */
+      border-top: 4px solid #333;   /* Darker gray or desired color */
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      margin-right: 0.5rem;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
-  <!-- Header with Responsive Nav -->
+  <!-- Header/Nav (unchanged) -->
   <header>
     <nav class="top-nav" role="navigation" aria-label="Main navigation">
-      <!-- Visually hidden heading for screen readers -->
       <h2 class="visually-hidden">Main Navigation</h2>
-
-      <!-- Brand or Title (left side) -->
       <div class="nav-brand">
         <a href="home.html" aria-label="Go to home page">M & M Consulting</a>
       </div>
-
-      <!-- Hamburger button for mobile (right side) -->
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
         &#9776;
       </button>
-
       <ul class="nav-links" id="nav-links">
         <li><a href="home.html">Home</a></li>
         <li><a href="index.html">Quizzes</a></li>
@@ -40,41 +176,34 @@
     </nav>
   </header>
 
-  <!-- Main content area -->
+  <!-- Main quiz content area -->
   <main class="quiz-section">
     <h1>OB/GYN PANCE Questions</h1>
-
-    <!-- Displays quiz progress (e.g., "Question 1 of 10") -->
     <div class="progress" id="progress-label" aria-live="polite"></div>
-
-    <!-- The card container (includes front/back flipping) -->
     <div class="card-container" id="flashcard-container">
       <div class="card" id="card" aria-live="polite">
-        <!-- Front side of card -->
         <div class="card-face card-front" id="card-front">
-          <div class="question-text" id="question-text">
-            <!-- Question text injected via scripts.js -->
-          </div>
+          <div class="question-text" id="question-text"></div>
           <div class="radio-container" id="radio-container" role="radiogroup" aria-labelledby="question-text">
-            <!-- Multiple-choice options injected here -->
+            <!-- MCQ choices inserted by scripts.js -->
           </div>
         </div>
-
-        <!-- Back side of card -->
         <div class="card-face card-back" id="card-back">
-          <div class="answer-text" id="answer-text">
-            <!-- Feedback (correct/incorrect) displayed here -->
-          </div>
+          <div class="answer-text" id="answer-text"></div>
         </div>
       </div>
 
-      <!-- Action buttons for controlling the quiz (placed directly under the card) -->
+      <!-- Quiz buttons -->
       <div class="buttons">
-        <!-- NEW: Back Button -->
-        <button id="back-button" disabled aria-label="Load the previous question">Back</button>
-        <button id="submit-button" aria-label="Submit your answer">Submit Answer</button>
-        <button id="next-button" disabled aria-label="Load the next question">Next Question</button>
+        <button id="back-button" disabled>Back</button>
+        <button id="submit-button">Submit Answer</button>
+        <button id="next-button">Next Question</button>
       </div>
+    </div>
+
+    <!-- Button that opens the chat panel -->
+    <div class="buttons">
+      <button id="chatbotButton">Chat with Xamtac</button>
     </div>
   </main>
 
@@ -83,23 +212,242 @@
     <p>&copy; <span id="currentYear"></span> M & M Consulting. All rights reserved. Xamtac is the best.</p>
   </footer>
 
-  <!-- Main Quiz Script -->
+  <!-- The main quiz script (unchanged) -->
   <script src="scripts.js"></script>
-  <script>
-    // Dynamically update the year in the footer
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-    // Toggle navigation for mobile
+  <!-- NEW: Chat panel HTML (initially hidden off-screen) -->
+  <div id="chatPanel">
+    <div id="chatHeader">
+      <h2>Xamtac Chat</h2>
+      <!-- New "Settings" button for API key input -->
+      <button id="settingsBtn" aria-label="Open chatbot settings">⚙️</button>
+      <button id="closeChatBtn" aria-label="Close chat">&times;</button>
+    </div>
+
+    <div id="chatBody"></div>
+
+    <!-- Settings container, toggled by #settingsBtn -->
+    <div id="settingsContainer">
+      <label for="apiKeyInput">OpenAI API Key:</label>
+      <input type="text" id="apiKeyInput" placeholder="sk-..." />
+
+      <button id="saveSettingsBtn">Save Key</button>
+      <div id="settingsMsg"></div>
+    </div>
+
+    <div id="chatFooter">
+      <textarea id="chatInput" rows="2" placeholder="Type your question..."></textarea>
+      <button id="sendChatBtn">Send</button>
+    </div>
+  </div>
+
+  <script>
+    // Dynamically update year
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
     const navToggle = document.getElementById("nav-toggle");
     const navLinks = document.getElementById("nav-links");
-
     if (navToggle) {
       navToggle.addEventListener("click", () => {
-        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', String(!expanded));
+        const expanded = navToggle.getAttribute("aria-expanded") === "true";
+        navToggle.setAttribute("aria-expanded", String(!expanded));
         navLinks.classList.toggle("open");
       });
     }
+
+    /*
+      ============================================
+      Chat Panel Logic using model "4o"
+      ============================================
+    */
+    // We'll store conversation histories per question ID:
+    //   conversationHistories[qid] = [ { role: 'user'|'assistant', content: string }, ... ]
+    let conversationHistories = {};
+
+    // Get references to chat elements
+    const chatPanel       = document.getElementById("chatPanel");
+    const chatbotButton   = document.getElementById("chatbotButton");
+    const closeChatBtn    = document.getElementById("closeChatBtn");
+    const chatBody        = document.getElementById("chatBody");
+    const chatInput       = document.getElementById("chatInput");
+    const sendChatBtn     = document.getElementById("sendChatBtn");
+    const settingsBtn     = document.getElementById("settingsBtn");
+    const settingsPanel   = document.getElementById("settingsContainer");
+    const apiKeyInput     = document.getElementById("apiKeyInput");
+    const saveSettingsBtn = document.getElementById("saveSettingsBtn");
+    const settingsMsg     = document.getElementById("settingsMsg");
+
+    // On page load, prefill the API key field if it's in sessionStorage
+    window.addEventListener("load", () => {
+      const existingKey = sessionStorage.getItem("apiKey");
+      if (existingKey) {
+        apiKeyInput.value = existingKey;
+      }
+    });
+
+    // Open chat panel
+    chatbotButton.addEventListener("click", () => {
+      chatPanel.classList.add("open");
+    });
+    // Close chat panel
+    closeChatBtn.addEventListener("click", () => {
+      chatPanel.classList.remove("open");
+    });
+
+    // Toggle settings panel
+    settingsBtn.addEventListener("click", () => {
+      settingsPanel.classList.toggle("open");
+      settingsMsg.style.display = "none"; // Hide any existing message
+    });
+
+    // Save the API key to sessionStorage
+    saveSettingsBtn.addEventListener("click", () => {
+      const keyValue = apiKeyInput.value.trim();
+      sessionStorage.setItem("apiKey", keyValue);
+      settingsMsg.textContent = "API key saved to session.";
+      settingsMsg.style.color = "#28a745"; // Green for success
+      settingsMsg.style.display = "block";
+    });
+
+    // Helper to append a new message to the chat window
+    function appendMessage(text, sender) {
+      const msg = document.createElement("div");
+      msg.classList.add("chat-message", sender);
+      msg.textContent = text;
+      chatBody.appendChild(msg);
+      chatBody.scrollTop = chatBody.scrollHeight; // auto-scroll
+    }
+
+    // Helper to show/hide a loading spinner
+    function showLoading() {
+      const spinnerDiv = document.createElement("div");
+      spinnerDiv.classList.add("chat-message", "loading-spinner");
+      spinnerDiv.id = "chatLoadingSpinner";
+      spinnerDiv.innerHTML = `
+        <div class="spinner"></div>
+        <span>Thinking...</span>
+      `;
+      chatBody.appendChild(spinnerDiv);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+    function hideLoading() {
+      const spinnerDiv = document.getElementById("chatLoadingSpinner");
+      if (spinnerDiv) {
+        spinnerDiv.remove();
+      }
+    }
+
+    // Retrieve the conversation array for a specific question
+    function getConversationForQuestion(questionId) {
+      if (!conversationHistories[questionId]) {
+        conversationHistories[questionId] = [];
+      }
+      return conversationHistories[questionId];
+    }
+
+    // Handle sending a message to the AI
+    sendChatBtn.addEventListener("click", async () => {
+      const userMessage = chatInput.value.trim();
+      if (!userMessage) return;
+
+      // Display user message in chat
+      appendMessage(userMessage, "user");
+      chatInput.value = "";
+
+      // Grab current quiz question from scripts.js (if available)
+      let currentQuestionData = "";
+      let questionId = "unknown";
+      if (typeof QUESTIONS !== "undefined" && typeof currentIndex !== "undefined") {
+        const qObj = QUESTIONS[currentIndex];
+        if (qObj) {
+          questionId = qObj.id;
+          currentQuestionData = `
+Question: ${qObj.question}
+Choices: ${qObj.choices.join(", ")}
+Correct Answer: ${qObj.answer}
+          `;
+        }
+      }
+
+      // Retrieve conversation for this question
+      const conversation = getConversationForQuestion(questionId);
+      // Add the user's message to conversation
+      conversation.push({ role: "user", content: userMessage });
+
+      // Always use model "4o"
+      const chosenModel = "gpt-4o";
+
+      // System prompt
+      const systemPrompt = `
+You are a dedicated teaching assistant for PA students studying for the PANCE exam in OB/GYN.
+Below is background knowledge about the current question:
+${currentQuestionData}
+
+Please use this information to guide and teach the student through reasoning, important concepts, and clarifications. 
+- If they have NOT submitted an answer yet, do NOT reveal the correct answer outright. Help them think through the question logically. 
+- If they indicate they have already submitted an answer, you may explain which choice was correct and why.
+
+Your goal is to deepen their understanding without simply giving away the answer unless they have submitted it.
+Offer clear steps and rationale on how to approach the problem.
+      `.trim();
+
+      // Keep only the last 10 messages for context
+      const last10Messages = conversation.slice(-10);
+
+      // Prepare the messages array for the API
+      const messagesForAPI = [
+        { role: "system", content: systemPrompt },
+        ...last10Messages
+      ];
+
+      // Check API key from session
+      const apiKey = sessionStorage.getItem("apiKey");
+      if (!apiKey) {
+        appendMessage("Error: No API key found. Please click Settings (⚙️) and enter your OpenAI key.", "gpt");
+        return;
+      }
+
+      // Show loading spinner
+      showLoading();
+
+      // Make the API request
+      try {
+        const apiResponse = await fetch("https://api.openai.com/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + apiKey
+          },
+          body: JSON.stringify({
+            model: chosenModel,
+            messages: messagesForAPI,
+            max_completion_tokens: 300
+          })
+        });
+
+        if (!apiResponse.ok) {
+          const errText = await apiResponse.text();
+          throw new Error(`Request failed (${apiResponse.status}): ${errText}`);
+        }
+
+        const data = await apiResponse.json();
+        let gptReply = "No response from the model.";
+        if (data.choices && data.choices.length > 0) {
+          gptReply = data.choices[0].message.content;
+        }
+
+        // Display GPT's reply & store in conversation
+        appendMessage(gptReply, "gpt");
+        conversation.push({ role: "assistant", content: gptReply });
+
+      } catch (err) {
+        appendMessage("Error: " + err.message, "gpt");
+      } finally {
+        // Always hide the spinner after API call
+        hideLoading();
+      }
+    });
   </script>
 </body>
 </html>
