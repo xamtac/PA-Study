@@ -29,7 +29,8 @@
         <li><a href="home.html">Home</a></li>
         <li><a href="index.html">Quizzes</a></li>
         <li><a href="studyguides.html">Study Guides</a></li>
-        <li><a href="summary.html">OB/GYN Quiz Summary</a></li>
+        <li><a href="summary.html">Quiz Summary</a></li>
+        <li><a href="jeopardy.html">Jeopardy</a></li>
       </ul>
     </nav>
   </header>
@@ -69,10 +70,4 @@
     if (navToggle) {
       navToggle.addEventListener("click", () => {
         const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', String(!expanded));
-        navLinks.classList.toggle("open");
-      });
-    }
-  </script>
-</body>
-</html>
+        navToggle.setAttribute('aria-expanded', String

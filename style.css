@@ -484,3 +484,40 @@ button:disabled {
   margin-left: 1.5rem;
   margin-bottom: 1rem;
 }
+
+/* Show Answer button styling */
+#showAnswerBtn {
+  background: #FFA500;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#showAnswerBtn:hover {
+  background: #e08b00;
+}
+
+/* Initially hidden daily double message, toggled via JS */
+.daily-double-message {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  display: none; /* Overridden via inline or JS when needed */
+}
+
+/* Container for correct/wrong buttons, hidden until user reveals answer */
+#answerButtons button {
+  margin: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#answerButtons button:hover {
+  opacity: 0.9;
+}
